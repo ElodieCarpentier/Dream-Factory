@@ -5,6 +5,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
+    
     <f:view contentType="text/html">
         <h:head>
             <f:facet name="first">
@@ -12,22 +13,58 @@
                 <title>Dream Factory</title>
             </f:facet>
         </h:head>
-
+        <h:body>
+            <h:form>
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
                     Header
+                                
+                        <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login">
+                            <p:button value="login" />
+                        </h:outputLink>
+ 
+                    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+ 
+                    <p:dialog header="Login" widgetVar="dlg" resizable="false">
+                        <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputLabel for="username" value="Username:" />
+                        <p:inputText id="username" value="#{userLoginView.username}" required="true" label="username" />
+ 
+                        <h:outputLabel for="password" value="Password:" />
+                        <p:password id="password" value="#{userLoginView.password}" required="true" label="password" />
+ 
+                    <f:facet name="footer">
+                        <p:commandButton value="Login" update="growl" actionListener="#{userLoginView.login}"
+                                 oncomplete="handleLoginRequest(xhr, status, args)" />
+                    </f:facet>  
+                        </h:panelGrid>
+                    </p:dialog>
+                    
+ 
+<script type="text/javascript">
+    function handleLoginRequest(xhr, status, args) {
+        alert("Fonctionne");
+        if(args.validationFailed || !args.loggedIn) {
+            PF('dlg').jq.effect("shake", {times:5}, 100);
+        }
+        else {
+            PF('dlg').hide();
+            $('#loginLink').fadeOut();
+        }
+    }
+</script>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
                     Footer
                 </p:layoutUnit>
 
-                <p:layoutUnit position="west" size="175" header="Réduire" collapsible="true">
-                    <h:form>
+                <p:layoutUnit position="west" size="200" header="Réduire" collapsible="true">
+                    
                     <p:growl autoUpdate="true"/>
  
-                    <p:panelMenu style="width:800px">
+                    <p:panelMenu style="width:400px">
                         <p:submenu label="Ajax Menuitems">
                             <p:menuitem value="Save" actionListener="#{menuView.save}" icon="ui-icon-disk" />
                             <p:menuitem value="Update" actionListener="#{menuView.update}"  icon="ui-icon-arrowrefresh-1-w" />
@@ -48,9 +85,9 @@
                             <p:menuitem value="Mobile" outcome="/index" icon="ui-icon-signal" />
                         </p:submenu>
                     </p:panelMenu>
-                </h:form>
+                    
                    
-                </p:layoutUnit>
+               </p:layoutUnit>
 
                 <p:layoutUnit position="center">
                     Bienvenue à la Dream Factory
@@ -59,21 +96,12 @@
                 </p:layoutUnit>
 
             </p:layout>
+                </h:form>
 
                 
-
+        </h:body>
     </f:view>
     
-<script type="text/javascript">
-    function handleLoginRequest(xhr, status, args) {
-        if(args.validationFailed || !args.loggedIn) {
-            PF('dlg').jq.effect("shake", {times:5}, 100);
-        }
-        else {
-            PF('dlg').hide();
-            $('#loginLink').fadeOut();
-        }
-    }
-</script>
+
 </html>
 
