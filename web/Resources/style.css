@@ -1,12 +1,12 @@
 .test
 {
-	color:blue;
+    color:yellow;
 }
 
-body
+.login
 {
-    background-image:url("Lanscape.jpg");
-    background-repeat: no-repeat;
-    background-position:top center;
-    background-size: 100%;
+        background-image:url("Lanscape.jpg");
+        background-repeat: no-repeat;
+        background-position:top center;
+        background-size: 100%;
 }
