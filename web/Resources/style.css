@@ -5,5 +5,8 @@
 
 body
 {
-    background-image:url(C:\Users\Ahria\Documents\DreamFactory\src\img\Lanscape.jpg);
+    background-image:url("Lanscape.jpg");
+    background-repeat: no-repeat;
+    background-position:top center;
+    background-size: 100%;
 }
