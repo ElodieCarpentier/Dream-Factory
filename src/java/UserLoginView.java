@@ -1,13 +1,15 @@
-package org.primefaces.showcase.view.overlay;
+
  
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.faces.bean.SessionScoped;
  
 import org.primefaces.context.RequestContext;
  
 @ManagedBean
+@SessionScoped
 public class UserLoginView {
      
     private String username;
@@ -30,7 +32,7 @@ public class UserLoginView {
         this.password = password;
     }
    
-    public void login(ActionEvent event) {
+    public String login(ActionEvent event) {
         RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage message = null;
         boolean loggedIn = false;
@@ -45,5 +47,11 @@ public class UserLoginView {
          
         FacesContext.getCurrentInstance().addMessage(null, message);
         context.addCallbackParam("loggedIn", loggedIn);
+        if (loggedIn){
+            System.out.println("Loger in");
+            return "welcomePrimefaces";
+        }
+        System.out.println("Fin if");
+        return "";
     }   
 }
