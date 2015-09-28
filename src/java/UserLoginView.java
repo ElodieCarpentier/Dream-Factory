@@ -32,7 +32,7 @@ public class UserLoginView {
         this.password = password;
     }
    
-    public String login(ActionEvent event) {
+    public void login(ActionEvent event) {
         RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage message = null;
         boolean loggedIn = false;
@@ -40,6 +40,7 @@ public class UserLoginView {
         if(username != null && username.equals("admin") && password != null && password.equals("admin")) {
             loggedIn = true;
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);
+            
         } else {
             loggedIn = false;
             message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
@@ -49,9 +50,16 @@ public class UserLoginView {
         context.addCallbackParam("loggedIn", loggedIn);
         if (loggedIn){
             System.out.println("Loger in");
-            return "welcomePrimefaces";
+            lol();
         }
+                
         System.out.println("Fin if");
-        return "";
-    }   
+                
+    }
+    public String lol(){
+        return "welcomePrimefaces";
+    }
+    public String lol2(){
+        return "index";
+    }
 }
