@@ -60,11 +60,11 @@ public class UserLoginView {
             {
                 System.out.println(rs.getString("ID_USER"));
                 loggedIn = true;
-                message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username); 
+                message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenue", username); 
             }
             else {
                 loggedIn = false;
-                message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
+                message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Ce n'est pas les bons identifiants");
             }
              } catch (Exception ex) {
             System.out.println("Error in login() -->" + ex.getMessage());

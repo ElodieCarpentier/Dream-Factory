@@ -1,10 +1,11 @@
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,6 +16,8 @@ import java.sql.ResultSet;
  *
  * @author Kévin
  */
+@ManagedBean
+@SessionScoped
 public class ConnectionBDD {
     
     public static void sauverenBase(String personne, String psswd,String status){
@@ -27,7 +30,7 @@ public class ConnectionBDD {
             Class.forName("com.mysql.jdbc.Driver");
             cn = DriverManager.getConnection(url, login, passwd);
             st = cn.createStatement();
-            String sql="Insert into `user` (`ID_USER`, `PWD`,`STATUT`) VALUES('"+ personne +"','"+ psswd +"','"+ status +"')";
+            String sql="Insert into user (ID_USER, PWD, STATUT) VALUES('"+ personne +"','"+ psswd +"','"+ status +"')";
             
             st.executeUpdate(sql);
         }

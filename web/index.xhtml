@@ -11,6 +11,7 @@
         <title>Dream Factory - Login</title>
     </h:head>
     
+    
     <h:body class='login'>
         <!-- Logo de l'entreprise -->
         <center> <img src="http://images.cooltext.com/4433570.png"/> </center>
@@ -21,18 +22,18 @@
             
                 <div id="boutonlogin">
                      <center>
-                <p:commandButton value="login" onclick="PF('dlg').show();"/> </center>
+                <p:commandButton value="Qui est au commande ?" onclick="PF('dlg').show();"/> </center>
                 </div>
            
             
                     <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
  
-                    <p:dialog header="Login" widgetVar="dlg" resizable="false">
+                    <p:dialog header="Qui est au commande ?" widgetVar="dlg" resizable="false">
                         <h:panelGrid columns="2" cellpadding="5">
-                        <h:outputLabel for="username" value="Username:" />
+                        <h:outputLabel for="username" value="Nom de code:" />
                         <p:inputText id="username" value="#{userLoginView.username}" required="true" label="username" />
  
-                        <h:outputLabel for="password" value="Password:" />
+                        <h:outputLabel for="password" value="Mot de passe:" />
                         <p:password id="password" value="#{userLoginView.password}" required="true" label="password" />
  
                     <f:facet name="footer">
@@ -41,8 +42,6 @@
                     </f:facet>  
                         </h:panelGrid>
                     </p:dialog>
-                    
- 
 
         <div id="boutonEntrer" style="display: none">
             <center><p:commandButton value="Entrer dans le monde des rêves" update="growl" action="#{userLoginView.lol()}"/></center>
