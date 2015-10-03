@@ -12,10 +12,12 @@
     </h:head>
     
     <h:body class="login">
-        Page de Login
-        <p class="test"> Ceci est un test ! </p>
+        <!-- Logo de l'entreprise -->
+        <center> <img src="http://images.cooltext.com/4433570.png"/> </center>
+        
+        <!-- Formulaire de connexion -->
         <h:form>
-            <p:commandButton value="login" onclick="PF('dlg').show();"/>
+            <center> <p:commandButton value="login" onclick="PF('dlg').show();"/> </center>
             
                     <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
  
@@ -48,7 +50,7 @@
         }
     }
 </script>
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+        <center><h:link outcome="welcomePrimefaces" value="Primefaces welcome page" /></center>
         </h:form>
     </h:body>
     <!--
