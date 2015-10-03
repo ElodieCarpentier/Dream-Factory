@@ -1,16 +1,16 @@
 // Feuille de style
 
-.test
+
+//Header de page
+.header
 {
-    color:yellow;
+    background-color: #0404B4
 }
 
-// Page de login
-.login
-{
-        background-image:url("Lanscape.jpg");
-        background-repeat: no-repeat;
-        background-position:top center;
-        background-size: 100%;
-        background-color: #0404B4 
+.login{
+    background-image:url("Resources/Lanscape.jpg");
+    background-repeat: no-repeat;
+    background-position:top center;
+    background-size: 100%;
+    background-color: #0404B4
 }
