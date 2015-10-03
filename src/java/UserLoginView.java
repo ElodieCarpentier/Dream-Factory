@@ -1,5 +1,10 @@
 
  
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
@@ -32,26 +37,48 @@ public class UserLoginView {
         this.password = password;
     }
    
-    public void login(ActionEvent event) {
+    public void login(ActionEvent event) throws SQLException, ClassNotFoundException {
         RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage message = null;
         boolean loggedIn = false;
-         
-        if(username != null && username.equals("admin") && password != null && password.equals("admin")) {
-            loggedIn = true;
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);
+        Connection con = null;
+        PreparedStatement ps = null;
+        Class.forName( "com.mysql.jdbc.Driver" );
+        String url = "jdbc:mysql://localhost/dreamfactory";
+        String login= "root";
+        String passwd="";
+        try {
+            con = DriverManager.getConnection(url, login, passwd);
+            System.out.println("Reussi");
+            ps = con.prepareStatement(
+                    "select ID_USER, PWD FROM user where ID_USER= ? and PWD= ? ");
+            ps.setString(1, username);
+            ps.setString(2, password);
+ 
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) // found
+            {
+                System.out.println(rs.getString("ID_USER"));
+                loggedIn = true;
+                message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);
+                
+            }
+            else {
+                loggedIn = false;
+                message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
+            }
+             } catch (Exception ex) {
+            System.out.println("Error in login() -->" + ex.getMessage());
             
-        } else {
-            loggedIn = false;
-            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
         }
-         
+
         FacesContext.getCurrentInstance().addMessage(null, message);
-        context.addCallbackParam("loggedIn", loggedIn);
         if (loggedIn){
             System.out.println("Loger in");
             lol();
         }
+        context.addCallbackParam("loggedIn", loggedIn);
+        
                 
         System.out.println("Fin if");
                 
