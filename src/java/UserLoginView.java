@@ -60,8 +60,7 @@ public class UserLoginView {
             {
                 System.out.println(rs.getString("ID_USER"));
                 loggedIn = true;
-                message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);
-                
+                message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username); 
             }
             else {
                 loggedIn = false;

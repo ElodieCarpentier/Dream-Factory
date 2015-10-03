@@ -17,7 +17,13 @@
         
         <!-- Formulaire de connexion -->
         <h:form>
-            <center> <p:commandButton value="login" onclick="PF('dlg').show();"/> </center>
+            
+            
+                <div id="boutonlogin">
+                     <center>
+                <p:commandButton value="login" onclick="PF('dlg').show();"/> </center>
+                </div>
+           
             
                     <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
  
@@ -47,7 +53,9 @@
             alert("Fonctionne");
             PF('dlg').hide();
             $('#loginLink').fadeOut();
+            document.getElementById('boutonlogin').style.display ='none';
         }
+    
     }
 </script>
         <center><h:link outcome="welcomePrimefaces" value="Primefaces welcome page" /></center>
