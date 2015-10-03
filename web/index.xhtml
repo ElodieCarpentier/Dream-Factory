@@ -43,65 +43,29 @@
                     </p:dialog>
                     
  
-<script type="text/javascript">
+
+        <div id="boutonEntrer" style="display: none">
+            <center><p:commandButton value="Entrer dans le monde des rêves" update="growl" action="#{userLoginView.lol()}"/></center>
+        </div>
+        </h:form>
+    </h:body>
+    
+    <script type="text/javascript">
     function handleLoginRequest(xhr, status, args) {
         if(args.validationFailed || !args.loggedIn) {
-            alert("Fonctionne pas");
             PF('dlg').jq.effect("shake", {times:5}, 100);
         }
         else {
-            alert("Fonctionne");
             PF('dlg').hide();
             $('#loginLink').fadeOut();
             document.getElementById('boutonlogin').style.display ='none';
+            document.getElementById('boutonEntrer').style.display ='block';
+            
         }
     
     }
 </script>
-        <center><h:link outcome="welcomePrimefaces" value="Primefaces welcome page" /></center>
-        </h:form>
-    </h:body>
-    <!--
-    <center>
-    <h:body class="login">
-        <h:form id="loginForm">
- 
-           
-            <p:growl id="msg" showDetail="true" life="3000" />
-            <p:panel header="Login" style="width: 360px;">
- 
-                <h:panelGrid id="loginPanel" columns="2">
- 
-                    <h:outputText value="Username" />
- 
-                    <p:inputText id="username" value="#{loginBeans.uname}" ></p:inputText>
- 
-                    <p:spacer></p:spacer>
- 
-                    <p:message for="username" ></p:message>
- 
-                    <h:outputText value="Password" />
- 
-                    <p:password id="password" value="#{loginBeans.password}"  feedback="false"></p:password>
- 
-                    <p:spacer></p:spacer>
- 
-                    <p:message for="password"></p:message>
- 
-                    <p:spacer></p:spacer>
- 
-                    <p:commandButton action="#{loginBeans.loginProject}" value="Login" update="loginForm" ajax="true"></p:commandButton>
- 
-                </h:panelGrid>
- 
-            </p:panel>
- 
-        </h:form>
- 
-    </h:body> 
-        </center>
-    -->
-
+   
 
 </html>
 
