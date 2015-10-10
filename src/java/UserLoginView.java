@@ -20,6 +20,36 @@ public class UserLoginView {
     private String username;
      
     private String password;
+    
+    private String nom;
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+    
+    private String image;
+    
+    private String statut;
+
+    public String getStatut() {
+        return statut;
+    }
+
+    public void setStatut(String statut) {
+        this.statut = statut;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
  
     public String getUsername() {
         return username;
@@ -51,7 +81,7 @@ public class UserLoginView {
             con = DriverManager.getConnection(url, login, passwd);
             System.out.println("Reussi");
             ps = con.prepareStatement(
-                    "select ID_USER, PWD FROM user where ID_USER= ? and PWD= ? ");
+                    "select ID_USER, PWD, IMAGE, STATUT, NOM_USER FROM user where ID_USER= ? and PWD= ? ");
             ps.setString(1, username);
             ps.setString(2, password);
  
@@ -59,6 +89,9 @@ public class UserLoginView {
             if (rs.next()) // found
             {
                 System.out.println(rs.getString("ID_USER"));
+                image="Resources/"+rs.getString("IMAGE");
+                statut=rs.getString("STATUT");
+                nom=rs.getString("NOM_USER");
                 loggedIn = true;
                 message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenue", username); 
             }
@@ -86,6 +119,14 @@ public class UserLoginView {
         return "welcomePrimefaces";
     }
     public String lol2(){
+        return "index";
+    }
+    public String logout(){
+        username="";
+        password="";
+        nom="";
+        image="";
+        statut="";
         return "index";
     }
 }
