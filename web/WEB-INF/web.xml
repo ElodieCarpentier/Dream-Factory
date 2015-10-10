@@ -6,9 +6,10 @@
     </context-param>
     
     <!-- Utiliser les thèmes Primefaces -->
+  
     <context-param>
         <param-name>primefaces.THEME</param-name>
-	<param-value>ui-lightness</param-value>    
+        <param-value>yourtheme</param-value>
     </context-param>
     
     <servlet>
