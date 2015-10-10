@@ -14,3 +14,11 @@
     background-size: 100%;
     background-color: #0404B4
 }
+
+.back{
+    background-image:url("Resources/Lanscape.jpg");
+    background-repeat: no-repeat;
+    background-position:top center;
+    background-size: 100%;
+    background-color: #0404B4
+}

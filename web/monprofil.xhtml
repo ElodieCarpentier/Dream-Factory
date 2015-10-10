@@ -9,7 +9,7 @@
     <f:view contentType="text/html">
         
         <h:head>
-            <link rel="stylesheet" href="style.css"/>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
                 <title>Dream Factory</title>
@@ -17,24 +17,24 @@
         </h:head>
         
         
-        <h:body>
+        <h:body class='back'>
             <h:form>
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="107" resizable="true" closable="true" collapsible="true" class='header'>
                     <!-- Ajouter l'image de fond du login en css -->
-                    <center> <img src="http://images.cooltext.com/4433570.png"/> </center>                    
-                                
+                    <center> <img src="http://images.cooltext.com/4433570.png"/> </center>                              
                 </p:layoutUnit>
 
                 
-
-                <p:layoutUnit position="west" size="200" header="Réduire" collapsible="true">
-                    
+                <p:layoutUnit position="west" size="200" header="Réduire" collapsible="true">   
                     <p:growl autoUpdate="true"/>
  
                     <p:panelMenu style="width:200px">
-                        <p:submenu label="Ajax Menuitems">
+                        <p:submenu label="Dream Factory">
+                            <p:menuitem value="Mon profil" url="monprofil" icon="fa fa-windows"/>
+                        </p:submenu>
+                            <p:submenu label="Ajax Menuitems">
                             <p:menuitem value="Save" actionListener="#{menuView.save}" icon="ui-icon-disk" />
                             <p:menuitem value="Update" actionListener="#{menuView.update}"  icon="ui-icon-arrowrefresh-1-w" />
                         </p:submenu>
@@ -58,8 +58,17 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
+                    <p:breadCrumb>
+                        <p:menuitem value="Accueil" url="#" />
+                        <p:menuitem value="Essai" url="#" />
+                        <p:menuitem value="Mon profil" url="#" />
+                        
+                    </p:breadCrumb>
                     Mon profil
-                    
+                        <p:layoutUnit position="west">
+                            <img> src="#{userLoginView.image}"</img>
+                        </p:layoutUnit>
+                                        
                 </p:layoutUnit>
                     
                 
