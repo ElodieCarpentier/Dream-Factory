@@ -23,8 +23,31 @@
 
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" class='header'>
                     <!-- Ajouter l'image de fond du login en css -->
+                    <div>
                     <center>Dream Factory</center>
-                                
+                    <table align="right">
+                        <tr>
+                        <td>
+                             #{userLoginView.nom}
+                        </td>
+                        </tr>
+                        <tr>
+                        <td>   
+                             #{userLoginView.statut}
+                        </td>
+                        </tr> 
+                         <tr>
+                        <td>
+                            <p:commandButton value="Logout" action="#{userLoginView.logout()}"></p:commandButton>
+                         </td>
+                        </tr>
+                    </table>
+                    <table align="right">
+                        <td>
+                            <img src="#{userLoginView.image}" alt="image" style="width:10%;height:10%" align="right" />
+                        </td>
+                    </table>
+                    </div>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
@@ -36,8 +59,8 @@
                     <p:growl autoUpdate="true"/>
  
                     <p:panelMenu style="width:400px">
-                        <p:submenu label="Ajax Menuitems">
-                            <p:menuitem value="Save" actionListener="#{menuView.save}" icon="ui-icon-disk" />
+                        <p:submenu label="Administration">
+                            <p:menuitem value="Utilisateur" actionListener="#{menuView.save}" icon="ui-icon-disk" />
                             <p:menuitem value="Update" actionListener="#{menuView.update}"  icon="ui-icon-arrowrefresh-1-w" />
                         </p:submenu>
                         <p:submenu label="Non-Ajax Menuitem">
@@ -62,7 +85,7 @@
 
                 <p:layoutUnit position="center">
                     Bienvenue à la Dream Factory
-                    <p:commandButton value="Ajout personne user" action="#{connectionBDD.sauverenBase('test2','test2','test2')}" 
+                    <p:commandButton value="#{userLoginView.username}" action="#{connectionBDD.sauverenBase('test2','test2','test2')}" 
                                      />
                 </p:layoutUnit>
 
