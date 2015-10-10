@@ -22,9 +22,8 @@
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="135" resizable="true" closable="true" collapsible="true" class='header'>
-                    <!-- Ajouter l'image de fond du login en css -->
+                    <center> <img src="http://images.cooltext.com/4433570.png"/> </center>
                     <div>
-                    <center>Dream Factory</center>
                     <table align="right">
                         <tr>
                         <td>
@@ -82,8 +81,10 @@
 
                 <p:layoutUnit position="center">
                     Bienvenue à la Dream Factory
-                    <p:commandButton value="#{userLoginView.username}" action="#{connectionBDD.sauverenBase('test2','test2','test2')}" 
-                                     />
+                    <p:commandButton 
+                        value="#{userLoginView.username}" 
+                        action="#{connectionBDD.sauverenBase('test2','test2','test2')}" 
+                        icon="fa fa-user-plus" />
                 </p:layoutUnit>
                     
                 
