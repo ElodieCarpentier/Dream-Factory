@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    
+    <f:view contentType="text/html">
+        
+        <h:head>
+            <link rel="stylesheet" href="style.css"/>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Dream Factory</title>
+            </f:facet>
+        </h:head>
+        
+        
+        <h:body>
+            <h:form>
+            <p:layout fullPage="true">
+                <p:layoutUnit position="north" size="135" resizable="true" closable="true" collapsible="true" class='header'>
+                    <!-- Ajouter l'image de fond du login en css -->
+                    <div>
+                    <center>Dream Factory</center>
+                    <table align="right">
+                        <tr>
+                        <td>
+                             #{userLoginView.nom}
+                        </td>
+                        </tr>
+                        <tr>
+                        <td>   
+                             #{userLoginView.statut}
+                        </td>
+                        </tr> 
+                         <tr>
+                        <td>
+                            <p:commandButton value="Logout" action="#{userLoginView.logout()}"></p:commandButton>
+                         </td>
+                        </tr>
+                    </table>
+                    <table align="right">
+                        <td>
+                            <img src="#{userLoginView.image}" alt="image" style="width:10%;height:10%" align="right" />
+                        </td>
+                    </table>
+                    </div>
+                </p:layoutUnit>
+
+                
+
+                <p:layoutUnit position="west" size="200" header="Réduire" collapsible="true">
+                    
+                    <p:growl autoUpdate="true"/>
+ 
+                    <p:panelMenu style="width:400px">
+                        <p:submenu label="Administration">
+                            <p:menuitem value="Utilisateur" actionListener="#{menuView.save}" icon="ui-icon-disk" />
+                            <p:menuitem value="Update" actionListener="#{menuView.update}"  icon="ui-icon-arrowrefresh-1-w" />
+                        </p:submenu>
+                        <p:submenu label="Non-Ajax Menuitem">
+                            <p:menuitem value="Delete" actionListener="#{menuView.delete}"  ajax="false" icon="ui-icon-close"/>
+                        </p:submenu>
+                    <p:separator />
+                        <p:submenu label="Navigations" >
+                        <p:submenu label="Links" icon="ui-icon-extlink">
+                        <p:submenu label="PrimeFaces" icon="ui-icon-heart">
+                            <p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon-home" />
+                        </p:submenu>
+                        </p:submenu>
+                            <p:menuitem value="Mobile" outcome="/index" icon="ui-icon-signal" />
+                        </p:submenu>
+                    </p:panelMenu>                    
+                    
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                Page des users
+                </p:layoutUnit>
+                    
+                
+                <p:layoutUnit position="south" size="40" closable="true" collapsible="true">
+                    Informations de connexion
+                </p:layoutUnit>
+
+            </p:layout>
+                </h:form>
+
+                
+        </h:body>
+    </f:view>
+    
+
+</html>
