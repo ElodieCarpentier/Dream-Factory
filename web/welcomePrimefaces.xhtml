@@ -21,7 +21,7 @@
             <h:form>
             <p:layout fullPage="true">
 
-                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" class='header'>
+                <p:layoutUnit position="north" size="107" resizable="true" closable="true" collapsible="true" class='header'>
                     <!-- Ajouter l'image de fond du login en css -->
                     <div>
                     <center>Dream Factory</center>
@@ -50,9 +50,7 @@
                     </div>
                 </p:layoutUnit>
 
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    Footer
-                </p:layoutUnit>
+                
 
                 <p:layoutUnit position="west" size="200" header="Réduire" collapsible="true">
                     
@@ -78,15 +76,19 @@
                         </p:submenu>
                             <p:menuitem value="Mobile" outcome="/index" icon="ui-icon-signal" />
                         </p:submenu>
-                    </p:panelMenu>
+                    </p:panelMenu>                    
                     
-                   
-               </p:layoutUnit>
+                </p:layoutUnit>
 
                 <p:layoutUnit position="center">
                     Bienvenue à la Dream Factory
                     <p:commandButton value="#{userLoginView.username}" action="#{connectionBDD.sauverenBase('test2','test2','test2')}" 
                                      />
+                </p:layoutUnit>
+                    
+                
+                <p:layoutUnit position="south" size="20" closable="true" collapsible="true">
+                    Informations de connexion
                 </p:layoutUnit>
 
             </p:layout>
