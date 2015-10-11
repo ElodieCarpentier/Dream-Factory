@@ -18,6 +18,10 @@ public class MenuView {
     public void delete() {
         addMessage("Success", "Data deleted");
     }
+    
+    public String creationreve(){
+        return "creationreve";
+    }
      
     public void addMessage(String summary, String detail) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);

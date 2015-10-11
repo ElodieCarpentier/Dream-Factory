@@ -19,8 +19,8 @@
         
         <h:body class='back'>
             <h:form>
-            
-                <p:layout fullPage="true">
+            <p:layout fullPage="true">
+
                 <p:layoutUnit position="north" size="135" resizable="true" closable="true" collapsible="true" class='header'>
                     <i>
                         <center>
@@ -64,11 +64,12 @@
  
                     <p:panelMenu style="width:200px">
                         <p:submenu label="Dream Factory">
-                            <p:menuitem value="Mon profil" url="monprofil" icon="fa fa-windows"/>
+                            <p:menuitem value="Mon profil" url="monprofil" icon="ui-icon-person"/>
                         </p:submenu>
                         <p:submenu label="Dream Lab">
-                            <p:menuitem value="Creation de rêve" action="#{menuView.delete}" icon="ui-icon-star"/>
+                            <p:menuitem value="Creation de rêve" url="creationreve" icon="ui-icon-star"/>
                         </p:submenu>
+                            
                     </p:panelMenu>                    
                     
                 </p:layoutUnit>
@@ -76,42 +77,36 @@
                 <p:layoutUnit position="center">
                     <p:breadCrumb>
                         <p:menuitem value="Accueil" url="#" />
-                        <p:menuitem value="Essai" url="#" />
-                        <p:menuitem value="Mon profil" url="#" />
+                        <p:menuitem value="Dream Lab" url="#" />
+                        <p:menuitem value="Creation de rêve" url="#" />
                         
                     </p:breadCrumb>
                     
                     <br />
-                    <table>
+                    <table align="left">
                         <tr>   
-                            <td style="color: #4682B4"><font size="5"><b>Mon profil</b></font></td>
+                            <td style="color: #4682B4"><font size="5"><b>Rêves créés</b></font></td>
                         </tr>
                         <tr>   
-                        <td><img src="#{userLoginView.image}" width="150"></img></td>
+                            <td>Insertion des rêves avec le statut créé</td>
                         </tr>
-                        <tr>
-                            <td><b>Identifiant: </b></td>
-                            <td>#{userLoginView.nom}</td>  
-                        </tr>
-                        <tr>
-                            <td><b>Statut: </b></td>
-                            <td>#{userLoginView.statut}</td>
-                        </tr>
-                        <tr> </tr>
-                        <tr> 
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <p:commandButton value="Demander un nouveau mot de passe" action="#" icon="ui-icon-arrowrefresh-1-e"></p:commandButton>
-                            </td>
-                        </tr>
+                        <td>
+                            <p:commandButton value="Créer un rêve" action="#" icon="ui-icon-star"></p:commandButton>
+                        </td>
+                        
                     </table>
-                </p:layoutUnit>
+                        
+                        
+                    
+                                        
+                
+                </p:layoutUnit>    
+                
                 <p:layoutUnit position="south" size="40" closable="true" collapsible="true">
                     Informations de connexion
                 </p:layoutUnit>
 
-                </p:layout>
+            </p:layout>
                 </h:form>
 
                 
