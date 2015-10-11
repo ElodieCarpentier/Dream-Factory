@@ -60,26 +60,20 @@
                     
                 </p:layoutUnit>
 
-                <p:layoutUnit position="west" size="200" header="Menu">
-                    
+                <p:layoutUnit position="west" size="200" header="Menu">   
                     <p:growl autoUpdate="true"/>
  
-                    <p:panelMenu style="width:400px">
-                        <p:submenu label="Non-Ajax Menuitem">
-                            <p:menuitem value="Delete" actionListener="#{userLoginView.createList()}"  ajax="true" icon="ui-icon-close"/>
+                    <p:panelMenu style="width:200px">
+                        <p:submenu label="Dream Factory">
+                            <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person"/>
                         </p:submenu>
-                    <p:separator />
-                        <p:submenu label="Navigations" >
-                        <p:submenu label="Links" icon="ui-icon-extlink">
-                        <p:submenu label="PrimeFaces" icon="ui-icon-heart">
-                            <p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon-home" />
-                            <p:menuitem value="Docs" url="http://www.primefaces.org/documentation" icon="ui-icon-document" />
-                            <p:menuitem value="Download" url="http://www.primefaces.org/downloads" icon="ui-icon-arrowthick-1-s" />
-                            <p:menuitem value="Support" url="http://www.primefaces.org/support" icon="ui-icon-wrench" />
+                        <p:submenu label="Dream Lab">
+                            <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star"/>
                         </p:submenu>
+                        <p:submenu label="Administration">
+                            <p:menuitem value="Gestion des users" action="#{menuView.utilisateur}" icon="ui-icon-star"/>
                         </p:submenu>
-                            <p:menuitem value="Mobile" outcome="/index" icon="ui-icon-signal" />
-                        </p:submenu>
+                            
                     </p:panelMenu>                    
                     
                 </p:layoutUnit>

@@ -61,36 +61,28 @@
 
                 
 
-                <p:layoutUnit position="west" size="200" header="Menu">
-                    
+                <p:layoutUnit position="west" size="200" header="Menu">   
                     <p:growl autoUpdate="true"/>
  
-                    <p:panelMenu style="width:400px">
+                    <p:panelMenu style="width:200px">
+                        <p:submenu label="Dream Factory">
+                            <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person"/>
+                        </p:submenu>
+                        <p:submenu label="Dream Lab">
+                            <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star"/>
+                        </p:submenu>
                         <p:submenu label="Administration">
-                            <p:menuitem value="Utilisateur" actionListener="#{menuView.utilisateur}" icon="ui-icon-disk" />
-                            <p:menuitem value="Update" actionListener="#{menuView.update}"  icon="ui-icon-arrowrefresh-1-w" />
+                            <p:menuitem value="Gestion des users" action="#{menuView.utilisateur}" icon="ui-icon-star" disabled="true"/>
                         </p:submenu>
-                        <p:submenu label="Non-Ajax Menuitem">
-                            <p:menuitem value="Delete" actionListener="#{menuView.delete}"  ajax="false" icon="ui-icon-close"/>
-                        </p:submenu>
-                    <p:separator />
-                        <p:submenu label="Navigations" >
-                        <p:submenu label="Links" icon="ui-icon-extlink">
-                        <p:submenu label="PrimeFaces" icon="ui-icon-heart">
-                            <p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon-home" />
-                        </p:submenu>
-                        </p:submenu>
-                            <p:menuitem value="Mobile" outcome="/index" icon="ui-icon-signal" />
-                        </p:submenu>
+                            
                     </p:panelMenu>                    
                     
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                Page des users
                  <p:breadCrumb>
-                     <p:menuitem value="Accueil" actionListener="#{userLoginView.lol()}"/>
-                     <p:menuitem value="Utilisateurs" actionListener="#{menuView.utilisateur()}" />
+                     <p:menuitem value="Accueil" action="#{userLoginView.lol}"/>
+                     <p:menuitem value="Utilisateurs" disabled="true" />
                 </p:breadCrumb>
                 <p:dataTable var="users" value="#{dtBasicView.users}">
             

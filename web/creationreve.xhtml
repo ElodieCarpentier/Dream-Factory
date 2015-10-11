@@ -69,6 +69,9 @@
                         <p:submenu label="Dream Lab">
                             <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star" disabled="true"/>
                         </p:submenu>
+                        <p:submenu label="Administration">
+                            <p:menuitem value="Gestion des users" action="#{menuView.utilisateur}" icon="ui-icon-star"/>
+                        </p:submenu>
                             
                     </p:panelMenu>                    
                     
@@ -76,9 +79,8 @@
 
                 <p:layoutUnit position="center">
                     <p:breadCrumb>
-                        <p:menuitem value="Accueil" url="#" />
-                        <p:menuitem value="Dream Lab" url="#" />
-                        <p:menuitem value="Creation de rêve" url="#" />
+                        <p:menuitem value="Accueil" action="#{userLoginView.lol}" />
+                        <p:menuitem value="Creation de rêve" url="#" disabled="true"/>
                         
                     </p:breadCrumb>
                     
