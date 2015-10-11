@@ -9,7 +9,7 @@
     <f:view contentType="text/html">
         
         <h:head>
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
+            <link rel="stylesheet" href="font-awesome-4.4.0/css/font-awesome.min.css"/>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
                 <title>Dream Factory</title>
@@ -19,8 +19,8 @@
         
         <h:body class='back'>
             <h:form>
-            <p:layout fullPage="true">
-
+            
+                <p:layout fullPage="true">
                 <p:layoutUnit position="north" size="135" resizable="true" closable="true" collapsible="true" class='header'>
                     <i>
                         <center>
@@ -64,26 +64,10 @@
  
                     <p:panelMenu style="width:200px">
                         <p:submenu label="Dream Factory">
-                            <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="fa fa-windows"/>
+                            <p:menuitem value="Mon profil" url="monprofil" icon="fa fa-windows"/>
                         </p:submenu>
-                            <p:submenu label="Administration">
-                                <p:menuitem value="Utilisateurs" action="#{menuView.utilisateur}" icon="ui-icon-disk" />
-                            <p:menuitem value="Update" actionListener="#{menuView.update}"  icon="ui-icon-arrowrefresh-1-w" />
-                        </p:submenu>
-                        <p:submenu label="Non-Ajax Menuitem">
-                            <p:menuitem value="Delete" actionListener="#{menuView.delete}"  ajax="false" icon="ui-icon-close"/>
-                        </p:submenu>
-                    <p:separator />
-                        <p:submenu label="Navigations" >
-                        <p:submenu label="Links" icon="ui-icon-extlink">
-                        <p:submenu label="PrimeFaces" icon="ui-icon-heart">
-                            <p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon-home" />
-                            <p:menuitem value="Docs" url="http://www.primefaces.org/documentation" icon="ui-icon-document" />
-                            <p:menuitem value="Download" url="http://www.primefaces.org/downloads" icon="ui-icon-arrowthick-1-s" />
-                            <p:menuitem value="Support" url="http://www.primefaces.org/support" icon="ui-icon-wrench" />
-                        </p:submenu>
-                        </p:submenu>
-                            <p:menuitem value="Mobile" outcome="/index" icon="ui-icon-signal" />
+                        <p:submenu label="Dream Lab">
+                            <p:menuitem value="Creation de rêve" action="#{menuView.delete}" icon="ui-icon-star"/>
                         </p:submenu>
                     </p:panelMenu>                    
                     
@@ -91,30 +75,43 @@
 
                 <p:layoutUnit position="center">
                     <p:breadCrumb>
-                        <p:menuitem value="Accueil" action="#{userLoginView.lol}" />
-                        <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" />
+                        <p:menuitem value="Accueil" url="#" />
+                        <p:menuitem value="Essai" url="#" />
+                        <p:menuitem value="Mon profil" url="#" />
                         
                     </p:breadCrumb>
-                    Mon profil
-                        <p:layoutUnit position="west">
-                            <img src="#{userLoginView.image}"></img>
-                        </p:layoutUnit>
-                        <p:layoutUnit position="west">
-                            Ici on met les infos du profil
-                            #{userLoginView.nom}
-                        </p:layoutUnit>
-                        <p:commandButton value="Demander un nouveau mot de passe" action="#" icon="fa fa-rotate-right">
-                        </p:commandButton>
                     
-                                        
+                    <br />
+                    <table>
+                        <tr>   
+                            <td style="color: #4682B4"><font size="5"><b>Mon profil</b></font></td>
+                        </tr>
+                        <tr>   
+                        <td><img src="#{userLoginView.image}" width="150"></img></td>
+                        </tr>
+                        <tr>
+                            <td><b>Identifiant: </b></td>
+                            <td>#{userLoginView.nom}</td>  
+                        </tr>
+                        <tr>
+                            <td><b>Statut: </b></td>
+                            <td>#{userLoginView.statut}</td>
+                        </tr>
+                        <tr> </tr>
+                        <tr> 
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <p:commandButton value="Demander un nouveau mot de passe" action="#" icon="ui-icon-arrowrefresh-1-e"></p:commandButton>
+                            </td>
+                        </tr>
+                    </table>
                 </p:layoutUnit>
-                    
-                
                 <p:layoutUnit position="south" size="40" closable="true" collapsible="true">
                     Informations de connexion
                 </p:layoutUnit>
 
-            </p:layout>
+                </p:layout>
                 </h:form>
 
                 
