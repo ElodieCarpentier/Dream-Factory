@@ -20,7 +20,8 @@
         <h:body>
             <h:form>
             <p:layout fullPage="true">
-                 <p:layoutUnit position="north" size="135" resizable="true" closable="true" collapsible="true" class='header'>
+
+                <p:layoutUnit position="north" size="135" resizable="true" closable="true" collapsible="true" class='header'>
                     <i>
                         <center>
                         <img src="http://images.cooltext.com/4433570.png"/>
@@ -45,7 +46,7 @@
                     </table>
                     <table align="right">
                         <td width="100px">
-                            <img src="#{userLoginView.image}" alt="image" style="width:80%;height:10%" align="right" onclick="#{userLoginView.monprofil()}"/>
+                            <img src="#{userLoginView.image}" alt="image" style="width:80%;height:10%" align="right" />
                         </td>
                     </table>
                     </span>
@@ -55,15 +56,13 @@
                     
                 </p:layoutUnit>
 
-                
-
                 <p:layoutUnit position="west" size="200" header="Réduire" collapsible="true">
                     
                     <p:growl autoUpdate="true"/>
  
                     <p:panelMenu style="width:400px">
-                        <p:submenu label="Administration">
-                            <p:menuitem value="Utilisateur" actionListener="#{menuView.utilisateur}" icon="ui-icon-disk" />
+                        <p:submenu id="admin" label="Administration">
+                            <p:menuitem value="Utilisateur" action="#{menuView.utilisateur}" icon="ui-icon-disk" />
                             <p:menuitem value="Update" actionListener="#{menuView.update}"  icon="ui-icon-arrowrefresh-1-w" />
                         </p:submenu>
                         <p:submenu label="Non-Ajax Menuitem">
@@ -74,6 +73,9 @@
                         <p:submenu label="Links" icon="ui-icon-extlink">
                         <p:submenu label="PrimeFaces" icon="ui-icon-heart">
                             <p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon-home" />
+                            <p:menuitem value="Docs" url="http://www.primefaces.org/documentation" icon="ui-icon-document" />
+                            <p:menuitem value="Download" url="http://www.primefaces.org/downloads" icon="ui-icon-arrowthick-1-s" />
+                            <p:menuitem value="Support" url="http://www.primefaces.org/support" icon="ui-icon-wrench" />
                         </p:submenu>
                         </p:submenu>
                             <p:menuitem value="Mobile" outcome="/index" icon="ui-icon-signal" />
@@ -83,11 +85,11 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                Page des users
-                 <p:breadCrumb>
-                     <p:menuitem value="Accueil" actionListener="#{userLoginView.lol()}"/>
-                     <p:menuitem value="Utilisateurs" actionListener="#{menuView.utilisateur()}" />
-                </p:breadCrumb>
+                    Bienvenue à la Dream Factory
+                    <p:commandButton 
+                        value="#{userLoginView.username}" 
+                        action="#{connectionBDD.sauverenBase('test2','test2','test2')}" 
+                        icon="fa fa-user-plus" />
                 </p:layoutUnit>
                     
                 
@@ -101,6 +103,13 @@
                 
         </h:body>
     </f:view>
-    
+   
+<SCRIPT>
+    if (document.myApplet.getUsername !== "admin")
+    {
+        document.getElementbyId("admin").style.display='none';
+    } 
+</SCRIPT>
 
 </html>
+

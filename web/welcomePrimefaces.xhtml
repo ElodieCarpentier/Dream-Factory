@@ -22,9 +22,12 @@
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="135" resizable="true" closable="true" collapsible="true" class='header'>
-                    <center> <img src="http://images.cooltext.com/4433570.png"/> </center>
-                    <div>
-                    <table align="right">
+                    <i>
+                        <center>
+                        <img src="http://images.cooltext.com/4433570.png"/>
+                    
+                        <span style="float: right">
+                        <table align="right">
                         <tr>
                         <td>
                              #{userLoginView.nom}
@@ -42,24 +45,22 @@
                         </tr>
                     </table>
                     <table align="right">
-                        <td>
-                            <img src="#{userLoginView.image}" alt="image" style="width:10%;height:10%" align="right" />
+                        <td width="100px">
+                            <img src="#{userLoginView.image}" alt="image" style="width:80%;height:10%" align="right" onclick="#{userLoginView.monprofil()}"/>
                         </td>
                     </table>
-                    </div>
+                    </span>
+                        </center>
+                        </i>
+                        
+                    
                 </p:layoutUnit>
-
-                
 
                 <p:layoutUnit position="west" size="200" header="Réduire" collapsible="true">
                     
                     <p:growl autoUpdate="true"/>
  
                     <p:panelMenu style="width:400px">
-                        <p:submenu label="Administration">
-                            <p:menuitem value="Utilisateur" actionListener="#{menuView.save}" icon="ui-icon-disk" />
-                            <p:menuitem value="Update" actionListener="#{menuView.update}"  icon="ui-icon-arrowrefresh-1-w" />
-                        </p:submenu>
                         <p:submenu label="Non-Ajax Menuitem">
                             <p:menuitem value="Delete" actionListener="#{menuView.delete}"  ajax="false" icon="ui-icon-close"/>
                         </p:submenu>
@@ -81,10 +82,6 @@
 
                 <p:layoutUnit position="center">
                     Bienvenue à la Dream Factory
-                    <p:commandButton 
-                        value="#{userLoginView.username}" 
-                        action="#{connectionBDD.sauverenBase('test2','test2','test2')}" 
-                        icon="fa fa-user-plus" />
                 </p:layoutUnit>
                     
                 
@@ -98,7 +95,6 @@
                 
         </h:body>
     </f:view>
-    
 
 </html>
 

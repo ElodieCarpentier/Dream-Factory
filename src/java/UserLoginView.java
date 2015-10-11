@@ -1,5 +1,4 @@
 
- 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,7 +14,7 @@ import org.primefaces.context.RequestContext;
  
 @ManagedBean
 @SessionScoped
-public class UserLoginView {
+public class UserLoginView{
      
     private String username;
      
@@ -116,10 +115,19 @@ public class UserLoginView {
                 
     }
     public String lol(){
-        return "welcomePrimefaces";
+        if (username.equals("admin")){
+            return "admin";
+        }
+        else
+        {
+            return "welcomePrimefaces";    
+        }
     }
     public String lol2(){
         return "index";
+    }
+    public String monprofil(){
+        return "monprofil";
     }
     public String logout(){
         username="";

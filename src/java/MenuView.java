@@ -7,8 +7,8 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 public class MenuView {
      
-    public void save() {
-        addMessage("Success", "Data saved");
+    public String utilisateur() {
+        return "user";
     }
      
     public void update() {
