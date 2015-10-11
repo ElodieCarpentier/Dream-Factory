@@ -92,8 +92,21 @@
                      <p:menuitem value="Accueil" actionListener="#{userLoginView.lol()}"/>
                      <p:menuitem value="Utilisateurs" actionListener="#{menuView.utilisateur()}" />
                 </p:breadCrumb>
+                <p:dataTable var="users" value="#{dtBasicView.users}">
+            
+                     <p:column headerText="Image">
+                         <img src="#{users.image}"/>
+                    </p:column>
+                    <p:column headerText="Nom">
+                        <h:outputText value="#{users.nom}" />
+                    </p:column>
+                    <p:column headerText="Statut">
+                        <h:outputText value="#{users.statut}" />
+                    </p:column>
+            </p:dataTable>
+
                 </p:layoutUnit>
-                    
+                
                 
                 <p:layoutUnit position="south" size="40" closable="true" collapsible="true">
                     Informations de connexion

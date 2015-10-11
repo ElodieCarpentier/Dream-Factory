@@ -4,11 +4,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.bean.SessionScoped;
+
  
 import org.primefaces.context.RequestContext;
  
@@ -33,6 +36,7 @@ public class UserLoginView{
     private String image;
     
     private String statut;
+    
 
     public String getStatut() {
         return statut;
@@ -123,6 +127,7 @@ public class UserLoginView{
             return "welcomePrimefaces";    
         }
     }
+    
     public String lol2(){
         return "index";
     }

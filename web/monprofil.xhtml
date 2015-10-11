@@ -64,10 +64,10 @@
  
                     <p:panelMenu style="width:200px">
                         <p:submenu label="Dream Factory">
-                            <p:menuitem value="Mon profil" url="monprofil" icon="fa fa-windows"/>
+                            <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="fa fa-windows"/>
                         </p:submenu>
-                            <p:submenu label="Ajax Menuitems">
-                            <p:menuitem value="Save" actionListener="#{menuView.save}" icon="ui-icon-disk" />
+                            <p:submenu label="Administration">
+                                <p:menuitem value="Utilisateurs" action="#{menuView.utilisateur}" icon="ui-icon-disk" />
                             <p:menuitem value="Update" actionListener="#{menuView.update}"  icon="ui-icon-arrowrefresh-1-w" />
                         </p:submenu>
                         <p:submenu label="Non-Ajax Menuitem">
@@ -91,9 +91,8 @@
 
                 <p:layoutUnit position="center">
                     <p:breadCrumb>
-                        <p:menuitem value="Accueil" url="#" />
-                        <p:menuitem value="Essai" url="#" />
-                        <p:menuitem value="Mon profil" url="#" />
+                        <p:menuitem value="Accueil" action="#{userLoginView.lol}" />
+                        <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" />
                         
                     </p:breadCrumb>
                     Mon profil
