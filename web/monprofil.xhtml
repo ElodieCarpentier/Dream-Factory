@@ -21,9 +21,41 @@
             <h:form>
             <p:layout fullPage="true">
 
-                <p:layoutUnit position="north" size="107" resizable="true" closable="true" collapsible="true" class='header'>
-                    <!-- Ajouter l'image de fond du login en css -->
-                    <center> <img src="http://images.cooltext.com/4433570.png"/> </center>                              
+                <p:layoutUnit position="north" size="135" resizable="true" closable="true" collapsible="true" class='header'>
+                    <i>
+                        <center>
+                        <img src="http://images.cooltext.com/4433570.png"/>
+                    
+                        <span style="float: right">
+                        <table align="right">
+                        <tr>
+                        <td>
+                             #{userLoginView.nom}
+                        </td>
+                        </tr>
+                        <tr>
+                        <td>   
+                             #{userLoginView.statut}
+                        </td>
+                        </tr> 
+                        <tr>
+                        <td>
+                            <p:commandLink action="#{userLoginView.logout()}">
+                                <h:graphicImage value="Resources/Exit.png" height="30" width="30"/>
+                            </p:commandLink>
+                         </td>
+                        </tr>
+                    </table>
+                    <table align="right">
+                        <td width="100px">
+                            <p:commandLink action="#{userLoginView.monprofil()}">
+                                <h:graphicImage value="#{userLoginView.image}" height="100" width="125"/>
+                            </p:commandLink>
+                        </td>
+                    </table>
+                    </span>
+                        </center>
+                        </i>
                 </p:layoutUnit>
 
                 

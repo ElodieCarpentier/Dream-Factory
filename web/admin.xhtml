@@ -40,13 +40,17 @@
                         </tr> 
                          <tr>
                         <td>
-                            <p:commandButton value="Logout" action="#{userLoginView.logout()}"></p:commandButton>
+                            <p:commandLink action="#{userLoginView.logout()}">
+                                <h:graphicImage value="Resources/Exit.png" height="30" width="30"/>
+                            </p:commandLink>
                          </td>
                         </tr>
                     </table>
                     <table align="right">
                         <td width="100px">
-                            <img src="#{userLoginView.image}" alt="image" style="width:80%;height:10%" align="right" />
+                            <p:commandLink action="#{userLoginView.monprofil()}">
+                                <h:graphicImage value="#{userLoginView.image}" height="100" width="125"/>
+                            </p:commandLink>
                         </td>
                     </table>
                     </span>
