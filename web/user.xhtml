@@ -82,10 +82,11 @@
                      <p:menuitem value="Accueil" action="#{userLoginView.lol}"/>
                      <p:menuitem value="Utilisateurs" disabled="true" />
                 </p:breadCrumb>
-                <p:dataTable var="users" value="#{dtBasicView.users}">
+                <!--
+                    <p:dataTable var="users" value="#{dtBasicView.createList()}">
             
                      <p:column headerText="Image">
-                         <img src="#{users.image}"/>
+                         <img src="#{users.image}" width="150px" height="120px"/>
                     </p:column>
                     <p:column headerText="Nom">
                         <h:outputText value="#{users.nom}" />
@@ -94,6 +95,30 @@
                         <h:outputText value="#{users.statut}" />
                     </p:column>
             </p:dataTable>
+                -->
+                    
+                    <p:dataGrid var="users" value="#{dtBasicView.createList()}" columns="3"
+        rows="12" paginator="false" id="users">
+ 
+        <f:facet name="header">
+            Utilisateur de la base
+        </f:facet>
+ 
+        <p:panel>
+            <h:panelGrid columns="1" style="width:100%">
+                
+                <p:graphicImage value="#{users.image}" width="130px" height="120px"/> 
+ 
+                <h:outputText value="#{users.nom}"/>
+ 
+                <h:outputText value="#{users.statut}"/>
+                
+                
+                
+            </h:panelGrid>
+        </p:panel>
+ 
+    </p:dataGrid>
 
                 </p:layoutUnit>
                 

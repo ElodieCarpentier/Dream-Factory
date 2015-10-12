@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,6 +19,10 @@ import java.util.List;
  *
  * @author Kevin_2
  */
+
+@ManagedBean(name="dtBasicView")
+@ViewScoped
+
 public class UserService {
    
     public String image;
@@ -37,7 +43,7 @@ public class UserService {
                     "select NOM_USER, STATUT, IMAGE FROM user");
  
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) // found
+            while (rs.next()) // found
             {
                 image="Resources/"+rs.getString("IMAGE");
                 statut=rs.getString("STATUT");
