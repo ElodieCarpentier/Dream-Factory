@@ -4,8 +4,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Statement;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
@@ -24,6 +23,12 @@ public class UserLoginView{
     private String password;
     
     private String nom;
+    
+    private String nomreve;
+    
+    private String descriptionreve;
+    
+    private String validation = "en attente";
 
     public String getNom() {
         return nom;
@@ -69,6 +74,24 @@ public class UserLoginView{
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getNomreve() {
+        return nomreve;
+    }
+
+    public void setNomreve(String nomreve) {
+        this.nomreve = nomreve;
+    }
+
+    public String getDescriptionreve() {
+        return descriptionreve;
+    }
+
+    public void setDescriptionreve(String descriptionreve) {
+        this.descriptionreve = descriptionreve;
+    }
+    
+    
    
     public void login(ActionEvent event) throws SQLException, ClassNotFoundException {
         RequestContext context = RequestContext.getCurrentInstance();
@@ -141,5 +164,41 @@ public class UserLoginView{
         image="";
         statut="";
         return "index";
+    }
+    public void insertionReve()throws SQLException, ClassNotFoundException{
+        RequestContext context = RequestContext.getCurrentInstance();
+        FacesMessage message2 = null;
+        Connection con = null;
+        Statement ps = null;
+        PreparedStatement ps2 = null;
+        Class.forName( "com.mysql.jdbc.Driver" );
+        String url = "jdbc:mysql://localhost/dreamfactory";
+        String login= "root";
+        String passwd="";
+        try {
+            con = DriverManager.getConnection(url, login, passwd);
+            ps = con.createStatement();
+            String sql= "INSERT into reve (IDREVE, DESCRIPTION_REVE, VALIDATION) values ('"+ nomreve +"','" + descriptionreve +"','"+ validation +"')";
+            ps.executeUpdate(sql);
+            
+            ps2= con.prepareStatement("Select * from reve where IDREVE=?");
+            ps2.setString(1,nomreve);
+            
+            ResultSet rs2= ps2.executeQuery();
+
+             if (rs2.next()) // found
+            {
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Succès","le reve "+ nomreve + " à bien été enregistré dans la base");
+             }
+             else{
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur","le reve "+ nomreve + " n'a pas été enregistré");   
+             }
+             
+             } catch (Exception ex) {
+            System.out.println("Error in login() -->" + ex.getMessage());
+            
+          
+        }
+        FacesContext.getCurrentInstance().addMessage(null, message2);
     }
 }

@@ -88,17 +88,15 @@
                     <br />
                     <td style="color: #4682B4"><font size="5"><b>Nouveau rêve</b></font></td>
                     <br />                    
- 
-                    <table>
-                        <tr>
-                            <td style="color: #4682B4"><font size="3"><b>Nom du rêve</b></font></td>
-                        </tr>
-                        <tr>
-                            <td style="color: #4682B4"><font size="3"><b>Description du rêve</b></font></td>
-                        </tr>
-                        <td><p:commandButton value="Créer le rêve" action="#" icon="ui-icon-star"></p:commandButton></td>
-                    </table>
-                    
+                    <h:form>
+                        <h3><font color="#4682B4">Nom du rêve</font></h3>
+                        <p:inputTextarea id="nomreve" value="#{userLoginView.nomreve}" rows="1" cols="33" required="true" label="nomreve"/>
+                        <br />
+                        <h3><font color="#4682B4">Description du rêve</font></h3>
+                        <p:inputTextarea id="description" value="#{userLoginView.descriptionreve}" rows="6" cols="66" required="true" label="description"/>
+                        <br />
+                    </h:form>                    
+                    <p:commandButton value="Créer le rêve" action="#{userLoginView.insertionReve()}" icon="ui-icon-star"></p:commandButton>
                         
 
                 </p:layoutUnit>    

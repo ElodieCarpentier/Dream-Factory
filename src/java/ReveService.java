@@ -6,8 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import org.primefaces.context.RequestContext;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -22,6 +26,7 @@ import javax.faces.bean.ViewScoped;
 
 @ManagedBean(name="dtReveView")
 @ViewScoped
+@SessionScoped
 
 public class ReveService {
    
@@ -94,4 +99,5 @@ public class ReveService {
         }
         return list;
     }
+        
 }

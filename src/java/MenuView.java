@@ -22,6 +22,9 @@ public class MenuView {
     public String creationreve(){
         return "creationreve";
     }
+    
+    public String creationreve2(){
+        return "creationreve2";
     public String validationreve(){
         return "validationreve";
     }

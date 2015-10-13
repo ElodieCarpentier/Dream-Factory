@@ -85,7 +85,7 @@
                 <div style="width: 20px; height: 20px;"></div>
                 
                 <c:if test="${userLoginView.username == 'joy'}">
-                    <div style="border-style: solid; border-color: black;border-width: thin;height:350px;overflow:auto; width: 700px">
+                    <div style="float: left; border-style: solid; border-color: black;border-width: thin;height:350px;overflow:auto; width: 700px">
                         <div style="width: 20px; height: 20px;"></div>
                         <center>Reve en cours d'approbation </center>
                         <div style="width: 20px; height: 20px;"></div>
@@ -100,11 +100,12 @@
                     </p:dataTable>
                         
                     </div>
-                    <div style="border-style: solid; border-color: black;border-width: thin;height:350px;overflow:auto; width: 700px">
+                    <div style="float: right; border-style: solid; border-color: black;border-width: thin;height:350px;overflow:auto; width: 700px">
                         <div style="width: 20px; height: 20px;"></div>
                         <center>Reve Acceptés/Refusés </center>
                         <div style="width: 20px; height: 20px;"></div>
-                        <p:dataTable var="reveaccepte" value="#{dtReveView.createListaccepte()}">
+                       
+                  <p:dataTable var="reveaccepte" value="#{dtReveView.createListaccepte()}">
             
                     <p:column headerText="Nom du reve">
                         <h:outputText value="#{reveaccepte.nomReve}" />
