@@ -25,6 +25,8 @@ public class MenuView {
     
     public String creationreve2(){
         return "creationreve2";
+    }
+    
     public String validationreve(){
         return "validationreve";
     }
@@ -37,4 +39,5 @@ public class MenuView {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
+    
 }
