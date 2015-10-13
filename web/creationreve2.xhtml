@@ -89,13 +89,13 @@
                     <br />                    
                     <h:form>
                         <h3><font color="#4682B4">Nom du rêve</font></h3>
-                        <p:inputTextarea rows="1" cols="33" />
+                        <p:inputTextarea id="nomreve" value="#{userLoginView.nomreve}" rows="1" cols="33" required="true" label="nomreve"/>
                         <br />
                         <h3><font color="#4682B4">Description du rêve</font></h3>
-                        <p:inputTextarea rows="6" cols="66" />
+                        <p:inputTextarea id="description" value="#{userLoginView.descriptionreve}" rows="6" cols="66" required="true" label="description"/>
                         <br />
                     </h:form>                    
-                    <p:commandButton value="Créer le rêve" action="#" icon="ui-icon-star"></p:commandButton>
+                    <p:commandButton value="Créer le rêve" action="#{userLoginView.insertionReve()}" icon="ui-icon-star"></p:commandButton>
                         
 
                 </p:layoutUnit>    

@@ -22,6 +22,10 @@ public class MenuView {
     public String creationreve(){
         return "creationreve";
     }
+    
+    public String creationreve2(){
+        return "creationreve2";
+    }
      
     public void addMessage(String summary, String detail) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);

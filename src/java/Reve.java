@@ -9,6 +9,7 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import org.primefaces.context.RequestContext;
 
@@ -27,7 +28,6 @@ import org.primefaces.context.RequestContext;
 public class Reve {
 
     private String nomReve ="";
-    private int niveau = 0;
     private float cout = 0;
     private String validation = "";
     private String desc = "";
@@ -46,14 +46,6 @@ public class Reve {
 
     public void setNomReve(String nomReve) {
         this.nomReve = nomReve;
-    }
-
-    public int getNiveau() {
-        return niveau;
-    }
-
-    public void setNiveau(int niveau) {
-        this.niveau = niveau;
     }
 
     public float getCout() {
@@ -79,5 +71,7 @@ public class Reve {
     public void setDesc(String desc) {
         this.desc = desc;
     }
+   
+    
 
 }
