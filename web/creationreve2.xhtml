@@ -68,6 +68,7 @@
                         </p:submenu>
                         <p:submenu label="Dream Lab">
                             <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star" disabled="true"/>
+                            <p:menuitem value="Validation de rêve" action="#{menuView.validationreve}" icon="ui-icon-check" disabled="false"/>
                         </p:submenu>
                         <p:submenu label="Administration">
                             <p:menuitem value="Gestion des users" action="#{menuView.utilisateur}" icon="ui-icon-star"/>
@@ -85,17 +86,19 @@
                     </p:breadCrumb>
                     
                     <br />
-                    <h2><font color="#4682B4">Nouveau rêve</font></h2>
+                    <td style="color: #4682B4"><font size="5"><b>Nouveau rêve</b></font></td>
                     <br />                    
-                    <h:form>
-                        <h3><font color="#4682B4">Nom du rêve</font></h3>
-                        <p:inputTextarea rows="1" cols="33" />
-                        <br />
-                        <h3><font color="#4682B4">Description du rêve</font></h3>
-                        <p:inputTextarea rows="6" cols="66" />
-                        <br />
-                    </h:form>                    
-                    <p:commandButton value="Créer le rêve" action="#" icon="ui-icon-star"></p:commandButton>
+ 
+                    <table>
+                        <tr>
+                            <td style="color: #4682B4"><font size="3"><b>Nom du rêve</b></font></td>
+                        </tr>
+                        <tr>
+                            <td style="color: #4682B4"><font size="3"><b>Description du rêve</b></font></td>
+                        </tr>
+                        <td><p:commandButton value="Créer le rêve" action="#" icon="ui-icon-star"></p:commandButton></td>
+                    </table>
+                    
                         
 
                 </p:layoutUnit>    

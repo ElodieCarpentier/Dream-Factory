@@ -67,8 +67,8 @@
                             <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person"/>
                         </p:submenu>
                         <p:submenu label="Dream Lab">
-                            <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star" disabled="true"/>
-                            <p:menuitem value="Validation de rêve" action="#{menuView.validationreve}" icon="ui-icon-check" disabled="false"/>
+                            <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star" disabled="false"/>
+                            <p:menuitem value="Validation de rêve" action="#{menuView.validationreve}" icon="ui-icon-check" disabled="true"/>
                         </p:submenu>
                         <p:submenu label="Administration">
                             <p:menuitem value="Gestion des users" action="#{menuView.utilisateur}" icon="ui-icon-star"/>
@@ -88,21 +88,21 @@
                     <br />
                     <table align="left">
                         <tr>   
-                            <td style="color: #4682B4"><font size="5"><b>Rêves créés</b></font></td>
+                            <td style="color: #4682B4"><font size="5"><b>Rêve à valider</b></font></td>
                         </tr>
+                        <td><br/></td>                       
                         <tr>   
-                            <td>Insertion des rêves avec le statut créé</td>
+                            <td style="color: #4682B4"><font size="3"><b>Nom du rêve</b></font></td>
+                            <td><!--#{Reve.nomReve}--></td>
                         </tr>
-                        <td>
-                            <p:commandButton value="Créer un rêve" action="#" icon="ui-icon-star"></p:commandButton>
-                        </td>
-                        
+                        <br/>
+                        <tr>   
+                            <td style="color: #4682B4"><font size="3"><b>Description du rêve</b></font></td>
+                            <td><!--#{Reve.desc}--></td>
+                        </tr> 
+                        <td><p:commandButton value="Valider le rêve" action="#" icon="ui-icon-check"></p:commandButton></td>
                     </table>
-                        
-                        
-                    
-                                        
-                
+   
                 </p:layoutUnit>    
                 
                 <p:layoutUnit position="south" size="40" closable="true" collapsible="true">

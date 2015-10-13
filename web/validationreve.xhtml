@@ -67,8 +67,8 @@
                             <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person"/>
                         </p:submenu>
                         <p:submenu label="Dream Lab">
-                            <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star" disabled="true"/>
-                            <p:menuitem value="Validation de rêve" action="#{menuView.validationreve}" icon="ui-icon-check" disabled="false"/>
+                            <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star" disabled="false"/>
+                            <p:menuitem value="Validation de rêve" action="#{menuView.validationreve}" icon="ui-icon-check" disabled="true"/>
                         </p:submenu>
                         <p:submenu label="Administration">
                             <p:menuitem value="Gestion des users" action="#{menuView.utilisateur}" icon="ui-icon-star"/>
@@ -88,10 +88,13 @@
                     <br />
                     <table align="left">
                         <tr>   
-                            <td style="color: #4682B4"><font size="5"><b>Rêves créés</b></font></td>
+                            <td style="color: #4682B4"><font size="5"><b>Rêves à valider</b></font></td>
                         </tr>
                         <tr>   
-                            <td>Insertion des rêves avec le statut créé</td>
+                            <td>Insertion des rêves à valider</td>
+                        </tr>
+                        <tr>   
+                            <td>A coté de chaque rêve à valider il y a un bouton pour le valider</td>
                         </tr>
                         <td>
                             <p:commandButton value="Créer un rêve" action="#" icon="ui-icon-star"></p:commandButton>
