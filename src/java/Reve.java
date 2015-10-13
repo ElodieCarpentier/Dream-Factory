@@ -31,7 +31,14 @@ public class Reve {
     private float cout = 0;
     private String validation = "";
     private String desc = "";
-    private List<String> reve = new ArrayList<String>();
+
+    public Reve(String nomReve, String desc, String validation) {
+        this.nomReve=nomReve;
+        this.desc=desc;
+        this.validation=validation;
+    }
+    
+
     
     public String getNomReve() {
         return nomReve;
@@ -73,40 +80,4 @@ public class Reve {
         this.desc = desc;
     }
 
-    public List<String> getReve() {
-       return reve;
-    }
-
-    public void setReve(List<String> reve) {
-        this.reve = reve;
-    }
-    public void affichereve() throws SQLException, ClassNotFoundException {
-        Connection con = null;
-        PreparedStatement ps = null;
-        /*reve=new ArrayList<String>();*/
-        Class.forName( "com.mysql.jdbc.Driver" );
-        String url = "jdbc:mysql://localhost/dreamfactory";
-        String login= "root";
-        String passwd="";
-        try {
-            con = DriverManager.getConnection(url, login, passwd);
-            ps = con.prepareStatement(
-                    "select IDREVE, NIVEAU, COUT, VALIDATION, DESCRIPTION_REVE FROM reve");
- 
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) // found
-            {
-                reve.add(rs.getString("IDREVE"));
-            }
-            System.out.println(reve);
-            
-        } 
-        catch (Exception ex) {
-            System.out.println("Error in login() -->" + ex.getMessage());
-            
-        }
-    
-    
-    
-}
 }
