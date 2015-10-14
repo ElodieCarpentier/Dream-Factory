@@ -34,6 +34,14 @@ public class MenuView {
     public String validationreve2(){
         return "validationreve2";
     }
+    
+     public String risque(){
+        return "risque";
+    }
+     
+     public String risque2(){
+        return "risque2";
+    }
      
     public void addMessage(String summary, String detail) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
