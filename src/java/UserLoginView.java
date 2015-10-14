@@ -119,7 +119,7 @@ public class UserLoginView{
                 statut=rs.getString("STATUT");
                 nom=rs.getString("NOM_USER");
                 loggedIn = true;
-                message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenue", username); 
+                message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenue", nom); 
             }
             else {
                 loggedIn = false;
@@ -171,27 +171,40 @@ public class UserLoginView{
         Connection con = null;
         Statement ps = null;
         PreparedStatement ps2 = null;
+        PreparedStatement ps3 = null;
         Class.forName( "com.mysql.jdbc.Driver" );
         String url = "jdbc:mysql://localhost/dreamfactory";
         String login= "root";
         String passwd="";
         try {
             con = DriverManager.getConnection(url, login, passwd);
-            ps = con.createStatement();
-            String sql= "INSERT into reve (IDREVE, DESCRIPTION_REVE, VALIDATION) values ('"+ nomreve +"','" + descriptionreve +"','"+ validation +"')";
-            ps.executeUpdate(sql);
-            
             ps2= con.prepareStatement("Select * from reve where IDREVE=?");
             ps2.setString(1,nomreve);
             
             ResultSet rs2= ps2.executeQuery();
 
              if (rs2.next()) // found
-            {
-                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Succès","le reve "+ nomreve + " à bien été enregistré dans la base");
+             {
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Ce nom de reve existe déjà","");
              }
              else{
-                 message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur","le reve "+ nomreve + " n'a pas été enregistré");   
+            
+            ps = con.createStatement();
+            String sql= "INSERT into reve (IDREVE, DESCRIPTION_REVE, VALIDATION) values ('"+ nomreve +"','" + descriptionreve +"','"+ validation +"')";
+            ps.executeUpdate(sql);
+            
+            ps3= con.prepareStatement("Select * from reve where IDREVE=?");
+            ps3.setString(1,nomreve);
+            
+            ResultSet rs3 = ps3.executeQuery();
+            
+             if (rs3.next()) // found
+            {
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Succès le reve à bien été enregistré dans la base","");
+             }
+             else{
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur le reve n'a pas été enregistré","");   
+             }
              }
              
              } catch (Exception ex) {
@@ -200,5 +213,6 @@ public class UserLoginView{
           
         }
         FacesContext.getCurrentInstance().addMessage(null, message2);
+        
     }
 }

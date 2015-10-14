@@ -10,6 +10,7 @@
         
         <h:head>
             <link rel="stylesheet" href="font-awesome-4.4.0/css/font-awesome.min.css"/>
+            <link rel="stylesheet" href="style.css"/>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
                 <title>Dream Factory</title>
@@ -21,7 +22,7 @@
             <h:form>
             <p:layout fullPage="true">
 
-                <p:layoutUnit position="north" size="135" resizable="true" closable="true" collapsible="true" class='header'>
+                <p:layoutUnit position="north" size="140" resizable="true" closable="true" collapsible="true" class='header'>
                     <i>
                         <center>
                         <img src="http://images.cooltext.com/4433570.png"/>
@@ -59,7 +60,7 @@
                 </p:layoutUnit>
 
                 
-                <p:layoutUnit position="west" size="200" header="Menu">   
+                <p:layoutUnit position="west" size="210" header="Menu">   
                     <p:growl autoUpdate="true"/>
  
                     <p:panelMenu style="width:200px">
@@ -82,6 +83,7 @@
                 <p:layoutUnit position="center">
                     <p:breadCrumb>
                         <p:menuitem value="Accueil" action="#{userLoginView.lol}" />
+                        <p:menuitem value="Reve Créés" action="#{menuView.creationreve}" />
                         <p:menuitem value="Creation de rêve" url="#" disabled="true"/>
                         
                     </p:breadCrumb>
@@ -91,10 +93,10 @@
                     <br />                    
                     <h:form>
                         <h3><font color="#4682B4">Nom du rêve</font></h3>
-                        <p:inputTextarea id="nomreve" value="#{userLoginView.nomreve}" rows="1" cols="33" required="true" label="nomreve"/>
+                        <p:inputTextarea id="nomreve" value="#{userLoginView.nomreve}" rows="1" cols="33" label="nomreve"/>
                         <br />
                         <h3><font color="#4682B4">Description du rêve</font></h3>
-                        <p:inputTextarea id="description" value="#{userLoginView.descriptionreve}" rows="6" cols="66" required="true" label="description"/>
+                        <p:inputTextarea id="description" value="#{userLoginView.descriptionreve}" rows="6" cols="66" label="description"/>
                         <br />
                     </h:form>                    
                     <p:commandButton value="Créer le rêve" action="#{userLoginView.insertionReve()}" icon="ui-icon-star"></p:commandButton>
