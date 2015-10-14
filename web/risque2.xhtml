@@ -10,7 +10,6 @@
         
         <h:head>
             <link rel="stylesheet" href="font-awesome-4.4.0/css/font-awesome.min.css"/>
-            <link rel="stylesheet" href="style.css"/>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
                 <title>Dream Factory</title>
@@ -22,7 +21,7 @@
             <h:form>
             <p:layout fullPage="true">
 
-                <p:layoutUnit position="north" size="140" resizable="true" closable="true" collapsible="true" class='header'>
+                <p:layoutUnit position="north" size="135" resizable="true" closable="true" collapsible="true" class='header'>
                     <i>
                         <center>
                         <img src="http://images.cooltext.com/4433570.png"/>
@@ -60,7 +59,7 @@
                 </p:layoutUnit>
 
                 
-                <p:layoutUnit position="west" size="210" header="Menu">   
+                <p:layoutUnit position="west" size="200" header="Menu">   
                     <p:growl autoUpdate="true"/>
  
                     <p:panelMenu style="width:200px">
@@ -68,9 +67,9 @@
                             <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person"/>
                         </p:submenu>
                         <p:submenu label="Dream Lab">
-                            <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star" disabled="true"/>
+                            <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star"/>
                             <p:menuitem value="Validation de rêve" action="#{menuView.validationreve}" icon="ui-icon-check"/>
-                            <p:menuitem value="Gestion des risques" action="#{menuView.risque}" icon="ui-icon-flag"/>
+                            <p:menuitem value="Gestion des risques" action="#{menuView.risque}" icon="ui-icon-check"/>
                         </p:submenu>
                         <p:submenu label="Administration">
                             <p:menuitem value="Gestion des users" action="#{menuView.utilisateur}" icon="ui-icon-star"/>
@@ -83,24 +82,33 @@
                 <p:layoutUnit position="center">
                     <p:breadCrumb>
                         <p:menuitem value="Accueil" action="#{userLoginView.lol}" />
-                        <p:menuitem value="Rêve créés" url="#" disabled="true"/>
+                        <p:menuitem value="Creation de rêve" url="#" disabled="true"/>
                         
                     </p:breadCrumb>
                     
                     <br />
                     <table align="left">
                         <tr>   
-                            <td style="color: #4682B4"><font size="5"><b>Rêves créés</b></font></td>
+                            <td style="color: #4682B4"><font size="5"><b>Rêve à valider</b></font></td>
                         </tr>
+                        <td><br/></td>                       
                         <tr>   
-                            <td>Insertion des rêves avec le statut créé</td>
+                            <td style="color: #4682B4"><font size="3"><b>Nom du rêve</b></font></td>
+                            <td><!--#{Reve.nomReve}--></td>
                         </tr>
-                        <td>
-                        <p:commandButton value="Créer un rêve" action="#{menuView.creationreve2}" icon="ui-icon-star"></p:commandButton>
-                        </td>
-                        
+                        <br/>
+                        <tr>   
+                            <td style="color: #4682B4"><font size="3"><b>Description du rêve</b></font></td>
+                            <td><!--#{Reve.desc}--></td>
+                        </tr>
                     </table>
-                        
+                    
+                    <h:form>
+                        <h2><font color="#4682B4">Liste des risques</font></h2>
+                        <p:inputTextarea id="risque" value="" rows="1" cols="33" required="true" label="risque"/>
+                        <br />
+                    </h:form>                    
+                    <p:commandButton value="Enregistrer les risques" action="#" icon="ui-icon-check"></p:commandButton>    
                         
                     
                                         
