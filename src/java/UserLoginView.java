@@ -27,6 +27,10 @@ public class UserLoginView{
     private String nomreve;
     
     private String descriptionreve;
+        
+    private String image;
+    
+    private String statut;
     
     private String validation = "en attente";
 
@@ -37,10 +41,7 @@ public class UserLoginView{
     public void setNom(String nom) {
         this.nom = nom;
     }
-    
-    private String image;
-    
-    private String statut;
+
     
 
     public String getStatut() {
