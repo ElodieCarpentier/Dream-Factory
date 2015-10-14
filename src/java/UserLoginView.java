@@ -32,7 +32,7 @@ public class UserLoginView{
     
     private String statut;
     
-    private String validation = "en attente";
+    private String validation = "en cours";
 
     public String getNom() {
         return nom;
@@ -166,7 +166,7 @@ public class UserLoginView{
         statut="";
         return "index";
     }
-    public void insertionReve()throws SQLException, ClassNotFoundException{
+    public void insertionReve(String nomFile)throws SQLException, ClassNotFoundException{
         RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage message2 = null;
         Connection con = null;
@@ -177,6 +177,7 @@ public class UserLoginView{
         String url = "jdbc:mysql://localhost/dreamfactory";
         String login= "root";
         String passwd="";
+        nomFile="";
         try {
             con = DriverManager.getConnection(url, login, passwd);
             ps2= con.prepareStatement("Select * from reve where IDREVE=?");
@@ -191,7 +192,7 @@ public class UserLoginView{
              else{
             
             ps = con.createStatement();
-            String sql= "INSERT into reve (IDREVE, DESCRIPTION_REVE, VALIDATION) values ('"+ nomreve +"','" + descriptionreve +"','"+ validation +"')";
+            String sql= "INSERT into reve (IDREVE, DESCRIPTION_REVE, VALIDATION, IMAGE_REVE) values ('"+ nomreve +"','" + descriptionreve +"','"+ validation +"','"+ nomFile +"')";
             ps.executeUpdate(sql);
             
             ps3= con.prepareStatement("Select * from reve where IDREVE=?");

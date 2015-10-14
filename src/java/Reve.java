@@ -31,11 +31,13 @@ public class Reve {
     private float cout = 0;
     private String validation = "";
     private String desc = "";
+    private String image = "";
 
-    public Reve(String nomReve, String desc, String validation) {
+    public Reve(String nomReve, String desc, String validation, String image) {
         this.nomReve=nomReve;
         this.desc=desc;
         this.validation=validation;
+        this.image=image;
     }
     
 
@@ -71,6 +73,15 @@ public class Reve {
     public void setDesc(String desc) {
         this.desc = desc;
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+    
    
     
 

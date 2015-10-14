@@ -98,8 +98,12 @@
                         <h3><font color="#4682B4">Description du rêve</font></h3>
                         <p:inputTextarea id="description" value="#{userLoginView.descriptionreve}" rows="6" cols="66" label="description"/>
                         <br />
+                        <p:growl id="messages" showDetail="true" />
+ 
+                         <p:fileUpload value="#{fileUploadView.file}" mode="simple"/>
+                         <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadView.upload}" disabled="true" />
                     </h:form>                    
-                    <p:commandButton value="Créer le rêve" action="#{userLoginView.insertionReve()}" icon="ui-icon-star"></p:commandButton>
+                    <p:commandButton value="Créer le rêve" action="#{userLoginView.insertionReve(fileUploadView.file.fileName)}" icon="ui-icon-star"></p:commandButton>
                         
 
                 </p:layoutUnit>    

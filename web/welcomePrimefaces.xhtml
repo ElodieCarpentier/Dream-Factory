@@ -87,11 +87,15 @@
                 <div style="width: 20px; height: 20px;"></div>
                 
                 <c:if test="${userLoginView.username == 'joy'}">
-                    <div style="float: left; border-style: solid; border-color: black;border-width: thin;height:350px;overflow:auto; width: 700px">
+                    <div style="float: left;height:350px;overflow:auto; width: 600px">
                         <div style="width: 20px; height: 20px;"></div>
-                        <center>Reve en cours d'approbation </center>
+                        <center>Reve en cours</center>
                         <div style="width: 20px; height: 20px;"></div>
-                        <p:dataTable var="reveencours" value="#{dtReveView.createList()}">
+                        <p:contentFlow value="#{dtReveView.createList()}" var="images">
+                            <p:graphicImage value="#{images.image}" styleClass="content"/>
+                            <div class="caption" style="color: #0404B4">#{images.nomReve} <br/> #{images.desc} </div>
+                        </p:contentFlow>
+<!--                        <p:dataTable var="reveencours" value="#{dtReveView.createList()}">
             
                     <p:column headerText="Nom du reve">
                         <h:outputText value="#{reveencours.nomReve}" />
@@ -99,15 +103,20 @@
                     <p:column headerText="Description">
                         <h:outputText value="#{reveencours.desc}" />
                     </p:column>
-                    </p:dataTable>
+                    </p:dataTable>-->
                         
                     </div>
-                    <div style="float: right; border-style: solid; border-color: black;border-width: thin;height:350px;overflow:auto; width: 700px">
+                    <div style="float: right;height:350px;overflow:auto; width: 600px">
                         <div style="width: 20px; height: 20px;"></div>
                         <center>Reve Acceptés/Refusés </center>
                         <div style="width: 20px; height: 20px;"></div>
-                       
-                  <p:dataTable var="reveaccepte" value="#{dtReveView.createListaccepte()}">
+                       <p:contentFlow value="#{dtReveView.createListaccepte()}" var="images">
+                            <p:graphicImage value="#{images.image}" styleClass="content"/>
+                            <div class="caption" style="color: #0404B4">#{images.nomReve} <br/> #{images.desc} <br /> <img src="#{images.validation}" width="20px" height="20px"/></div>
+                        </p:contentFlow>
+<!--                  
+
+<p:dataTable var="reveaccepte" value="#{dtReveView.createListaccepte()}">
             
                     <p:column headerText="Nom du reve">
                         <h:outputText value="#{reveaccepte.nomReve}" />
@@ -118,7 +127,7 @@
                     <p:column headerText="Validé ?">
                         <img src="#{reveaccepte.validation}" width="20px" height="20px"/>
                     </p:column>
-                    </p:dataTable>
+                    </p:dataTable>-->
                         
                     </div>
                 </c:if>

@@ -86,27 +86,24 @@
                         
                     </p:breadCrumb>
                     
-                    <br />
                     <table align="left">
                         <tr>   
                             <td style="color: #4682B4"><font size="5"><b>Rêve à valider</b></font></td>
                         </tr>
-                        <td><br/></td>                       
+                        <td></td>                       
                         <tr>   
                             <td style="color: #4682B4"><font size="3"><b>Nom du rêve</b></font></td>
-                            <td><!--#{Reve.nomReve}--></td>
+                           
                         </tr>
-                        <br/>
                         <tr>   
                             <td style="color: #4682B4"><font size="3"><b>Description du rêve</b></font></td>
-                            <td><!--#{Reve.desc}--></td>
+
                         </tr>
                     </table>
                     
                     <h:form>
                         <h2><font color="#4682B4">Liste des risques</font></h2>
-                        <p:inputTextarea id="risque" value="" rows="1" cols="33" required="true" label="risque"/>
-                        <br />
+                        <p:inputTextarea id="risque" value="" rows="1" cols="33" label="risque"/>
                     </h:form>                    
                     <p:commandButton value="Enregistrer les risques" action="#" icon="ui-icon-check"></p:commandButton>    
                         

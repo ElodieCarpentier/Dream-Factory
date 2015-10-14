@@ -33,6 +33,7 @@ public class ReveService {
     public String nom;
     public String desc;
     public String validation;
+    public String image;
     
         public List<Reve> createList()throws SQLException, ClassNotFoundException{
         List<Reve> list= new ArrayList<Reve>();
@@ -45,15 +46,15 @@ public class ReveService {
         try {
             con = DriverManager.getConnection(url, login, passwd);
             ps = con.prepareStatement(
-                    "select IDREVE, DESCRIPTION_REVE FROM reve where VALIDATION= ?");
-            ps.setString(1, "en attente");
+                    "select IDREVE, DESCRIPTION_REVE, IMAGE_REVE FROM reve where VALIDATION= ?");
+            ps.setString(1, "en cours");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) // found
             {
-                
                 nom=rs.getString("IDREVE");
                 desc=rs.getString("DESCRIPTION_REVE");
-                list.add(new Reve(nom,desc,""));
+                image="Resources/"+rs.getString("IMAGE_REVE");
+                list.add(new Reve(nom,desc,"",image));
             }
             System.out.println(list);
              } catch (Exception ex) {
@@ -73,7 +74,7 @@ public class ReveService {
         try {
             con = DriverManager.getConnection(url, login, passwd);
             ps = con.prepareStatement(
-                    "select IDREVE, DESCRIPTION_REVE, VALIDATION FROM reve where VALIDATION = ? or VALIDATION = ? order by VALIDATION");
+                    "select IDREVE, DESCRIPTION_REVE, VALIDATION, IMAGE_REVE FROM reve where VALIDATION = ? or VALIDATION = ? order by VALIDATION");
             ps.setString(1, "oui");
             ps.setString(2, "non");
             ResultSet rs = ps.executeQuery();
@@ -83,6 +84,7 @@ public class ReveService {
                 nom=rs.getString("IDREVE");
                 desc=rs.getString("DESCRIPTION_REVE");
                 validation=rs.getString("VALIDATION");
+                image="Resources"+rs.getString("IMAGE_REVE");
                 if (validation.equals("oui")){
                     validation="Resources/accepter.jpg";
                 }
@@ -90,7 +92,7 @@ public class ReveService {
                 {
                     validation="Resources/Croix-rouge.png";
                 }
-                list.add(new Reve(nom,desc,validation));
+                list.add(new Reve(nom,desc,validation,image));
             }
             System.out.println(list);
              } catch (Exception ex) {
