@@ -3,13 +3,13 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
     
     <f:view contentType="text/html">
         
         <h:head>
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
+            <link rel="stylesheet" href="font-awesome-4.4.0/css/font-awesome.min.css"/>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
                 <title>Dream Factory</title>
@@ -17,7 +17,7 @@
         </h:head>
         
         
-        <h:body>
+        <h:body class='back'>
             <h:form>
             <p:layout fullPage="true">
 
@@ -38,7 +38,7 @@
                              #{userLoginView.statut}
                         </td>
                         </tr> 
-                         <tr>
+                        <tr>
                         <td>
                             <p:commandLink action="#{userLoginView.logout()}">
                                 <h:graphicImage value="Resources/Exit.png" height="30" width="30"/>
@@ -56,10 +56,9 @@
                     </span>
                         </center>
                         </i>
-                        
-                    
                 </p:layoutUnit>
 
+                
                 <p:layoutUnit position="west" size="200" header="Menu">   
                     <p:growl autoUpdate="true"/>
  
@@ -70,7 +69,7 @@
                         <p:submenu label="Dream Lab">
                             <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star"/>
                             <p:menuitem value="Validation de rêve" action="#{menuView.validationreve}" icon="ui-icon-check"/>
-                            <p:menuitem value="Gestion des risques" action="#{menuView.risque}" icon="ui-icon-flag"/>
+                            <p:menuitem value="Gestion des risques" action="#{menuView.risque}" icon="ui-icon-check"/>
                         </p:submenu>
                         <p:submenu label="Administration">
                             <p:menuitem value="Gestion des users" action="#{menuView.utilisateur}" icon="ui-icon-star"/>
@@ -81,50 +80,40 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                Bienvenue à la Dream Factory
-                
-                <div style="width: 20px; height: 20px;"></div>
-                
-                <c:if test="${userLoginView.username == 'joy'}">
-                    <div style="float: left; border-style: solid; border-color: black;border-width: thin;height:350px;overflow:auto; width: 700px">
-                        <div style="width: 20px; height: 20px;"></div>
-                        <center>Reve en cours d'approbation </center>
-                        <div style="width: 20px; height: 20px;"></div>
-                        <p:dataTable var="reveencours" value="#{dtReveView.createList()}">
-            
-                    <p:column headerText="Nom du reve">
-                        <h:outputText value="#{reveencours.nomReve}" />
-                    </p:column>
-                    <p:column headerText="Description">
-                        <h:outputText value="#{reveencours.desc}" />
-                    </p:column>
-                    </p:dataTable>
+                    <p:breadCrumb>
+                        <p:menuitem value="Accueil" action="#{userLoginView.lol}" />
+                        <p:menuitem value="Creation de rêve" url="#" disabled="true"/>
                         
-                    </div>
-                    <div style="float: right; border-style: solid; border-color: black;border-width: thin;height:350px;overflow:auto; width: 700px">
-                        <div style="width: 20px; height: 20px;"></div>
-                        <center>Reve Acceptés/Refusés </center>
-                        <div style="width: 20px; height: 20px;"></div>
-                       
-                  <p:dataTable var="reveaccepte" value="#{dtReveView.createListaccepte()}">
-            
-                    <p:column headerText="Nom du reve">
-                        <h:outputText value="#{reveaccepte.nomReve}" />
-                    </p:column>
-                    <p:column headerText="Description">
-                        <h:outputText value="#{reveaccepte.desc}" />
-                    </p:column>
-                    <p:column headerText="Validé ?">
-                        <img src="#{reveaccepte.validation}" width="20px" height="20px"/>
-                    </p:column>
-                    </p:dataTable>
+                    </p:breadCrumb>
+                    
+                    <br />
+                    <table align="left">
+                        <tr>   
+                            <td style="color: #4682B4"><font size="5"><b>Rêve à valider</b></font></td>
+                        </tr>
+                        <td><br/></td>                       
+                        <tr>   
+                            <td style="color: #4682B4"><font size="3"><b>Nom du rêve</b></font></td>
+                            <td><!--#{Reve.nomReve}--></td>
+                        </tr>
+                        <br/>
+                        <tr>   
+                            <td style="color: #4682B4"><font size="3"><b>Description du rêve</b></font></td>
+                            <td><!--#{Reve.desc}--></td>
+                        </tr>
+                    </table>
+                    
+                    <h:form>
+                        <h2><font color="#4682B4">Liste des risques</font></h2>
+                        <p:inputTextarea id="risque" value="" rows="1" cols="33" required="true" label="risque"/>
+                        <br />
+                    </h:form>                    
+                    <p:commandButton value="Enregistrer les risques" action="#" icon="ui-icon-check"></p:commandButton>    
                         
-                    </div>
-                </c:if>
+                    
+                                        
                 
-                    
-                </p:layoutUnit>
-                    
+                </p:layoutUnit>    
                 
                 <p:layoutUnit position="south" size="40" closable="true" collapsible="true">
                     Informations de connexion
@@ -136,6 +125,7 @@
                 
         </h:body>
     </f:view>
+    
 
 </html>
 

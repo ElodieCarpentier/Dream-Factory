@@ -25,12 +25,22 @@ public class MenuView {
     
     public String creationreve2(){
         return "creationreve2";
+    }
+    
     public String validationreve(){
         return "validationreve";
     }
     
     public String validationreve2(){
         return "validationreve2";
+    }
+    
+     public String risque(){
+        return "risque";
+    }
+     
+     public String risque2(){
+        return "risque2";
     }
      
     public void addMessage(String summary, String detail) {
