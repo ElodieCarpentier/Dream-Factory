@@ -90,12 +90,12 @@
                     
                     <br />
                     
-                    <font size="5" style="color: #4682B4"><b>Gestion des risques</b></font>
+                    <font size="5" style="color: #4682B4"><b>Gestion des finances</b></font>
                     <br/>
                     <br/>
                                      
 
-                    <p:dataTable var="revefinance" value="#{dtReveView.createListFinance()}">
+                    <p:dataTable var="revefinance" value="#{dtReveView.createListValide()}">
             
                     <p:column headerText="Nom du reve">
                         <h:outputText value="#{revefinance.nomReve}" />
@@ -113,9 +113,8 @@
                     
                     <br/>
                     
-                    <p:commandButton value="Enregistrer les modifications" action="#" icon="ui-icon-disk"></p:commandButton>
-
-                        
+                    <p:commandButton value="Enregistrer les modifications" action="#" icon="ui-icon-disk"></p:commandButton>           
+                                   
                     
                                         
                 

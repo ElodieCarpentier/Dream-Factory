@@ -36,7 +36,15 @@ public class UserLoginView{
     
     private String statut;
     
-    private String validation = "en cours";
+    private String validation;
+
+    public void setValidation(String validation) {
+        this.validation = validation;
+    }
+
+    public String getValidation() {
+        return validation;
+    }
 
     public String getNom() {
         return nom;
@@ -45,8 +53,7 @@ public class UserLoginView{
     public void setNom(String nom) {
         this.nom = nom;
     }
-
-    
+   
 
     public String getStatut() {
         return statut;
