@@ -161,7 +161,7 @@ public class UserLoginView{
             }
             else {
                 loggedIn = false;
-                message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Ce n'est pas les bons identifiants");
+                message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Identifiants erronés");
             }
              } catch (Exception ex) {
             System.out.println("Error in login() -->" + ex.getMessage());
@@ -223,7 +223,7 @@ public class UserLoginView{
 
              if (rs2.next()) // found
              {
-                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Ce nom de reve existe déjà","");
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Il existe déjà un rêve avec ce nom","");
              }
              else{
             
@@ -238,10 +238,10 @@ public class UserLoginView{
             
              if (rs3.next()) // found
             {
-                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Succès le reve à bien été enregistré dans la base","");
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Le rêve a été enregistré avec succès","");
              }
              else{
-                 message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur le reve n'a pas été enregistré","");   
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur, le reve n'a pas été enregistré","");   
              }
              }
              
@@ -286,10 +286,10 @@ public class UserLoginView{
             
              if (rs2.next()) // found
             {
-                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Succès le risque à bien été rentrée","");
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Les risques ont été enregistrés avec succès ","");
              }
              else{
-                 message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur le risque n'a pas été enregistré","");   
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur, les informations n'ont pas été enregistrées","");   
              }
              }
            
@@ -328,10 +328,10 @@ public class UserLoginView{
             
              if (rs2.next()) // found
             {
-                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Succès le reve à été envoyé en Finance","");
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Le rêve a été envoyé pour étude budgétaire avec succès","");
              }
              else{
-                 message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur le reve n'est pas passé en Finance","");   
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur, le rêve n'a pas été envoyé au département des finances","");   
              }
             }
             catch (Exception ex) {

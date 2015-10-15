@@ -67,7 +67,7 @@
  
                     <p:panelMenu style="width:200px">
                         <p:submenu label="Dream Factory">
-                            <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person"/>
+                            <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person" id="monprofil"/>
                         </p:submenu>
                         <p:submenu label="Dream Lab">
                             <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star"/>                            
@@ -85,36 +85,36 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                Bienvenue à la Dream Factory
+                <font size="5" style="color: #4682B4"><b>Bienvenue à la Dream Factory</b></font>
                 
                 <div style="width: 20px; height: 20px;"></div>
                 
                 <c:if test="${userLoginView.username == 'joy'}">
                     <div style="float: left;height:270px;overflow: auto; width: 600px">
                         <br />
-                        <center>Reve en cours</center>
+                        <center>Rêves créées récemment</center>
                         <br /> 
-                        <p:contentFlow value="#{dtReveView.createList()}" var="images">
-                            <p:graphicImage value="#{images.image}" styleClass="content"/>
-                            <div class="caption" style="color: #0404B4">#{images.nomReve} <br/> #{images.desc} </div>
+                        <p:contentFlow value="#{dtReveView.createListRisque()}" var="risque">
+                            <p:graphicImage value="#{risque.image}" styleClass="content"/>
+                            <div class="caption" style="color: #0404B4">#{risque.nomReve} <br/> #{risque.desc} </div>
                         </p:contentFlow>                      
                     </div>
                      <div style="float: right;height:270px;overflow:auto; width: 600px">
                         <br />
-                        <center>Reve Refusés </center>
+                        <center>Rêves Validés </center>
                         <br />
-                       <p:contentFlow value="#{dtReveView.createListrefuse()}" var="refuse">
-                            <p:graphicImage value="#{refuse.image}" styleClass="content"/>
-                            <div class="caption" style="color: #0404B4">#{refuse.nomReve} <br/> #{refuse.desc}</div>
+                       <p:contentFlow value="#{dtReveView.createListProto()}" var="proto">
+                           <p:graphicImage value="#{proto.image}" styleClass="content"/>
+                            <div class="caption" style="color: #0404B4">#{proto.nomReve} <br/> #{proto.desc}</div>
                         </p:contentFlow>
                     </div>
                    <div style="height:270px;overflow:auto; width: 600px">
                         <br />
-                        <center>Reve Acceptés </center>
+                        <center>Rêve en attente de validation </center>
                         <br />
-                       <p:contentFlow value="#{dtReveView.createListaccepte()}" var="accepte">
-                            <p:graphicImage value="#{accepte.image}" styleClass="content"/>
-                            <div class="caption" style="color: #0404B4">#{accepte.nomReve} <br/> #{accepte.desc}</div>
+                       <p:contentFlow value="#{dtReveView.createListValide()}" var="valide">
+                            <p:graphicImage value="#{valide.image}" styleClass="content"/>
+                            <div class="caption" style="color: #0404B4">#{valide.nomReve} <br/> #{valide.desc}</div>
                         </p:contentFlow>
                     </div>
                 </c:if>
