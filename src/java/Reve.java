@@ -33,10 +33,9 @@ public class Reve {
     private String desc = "";
     private String image = "";
 
-    public Reve(String nomReve, String desc, String validation, String image) {
+    public Reve(String nomReve, String desc, String image) {
         this.nomReve=nomReve;
         this.desc=desc;
-        this.validation=validation;
         this.image=image;
     }
     

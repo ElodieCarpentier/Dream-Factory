@@ -91,19 +91,26 @@
                     <br />
                     <td style="color: #4682B4"><font size="5"><b>Nouveau rêve</b></font></td>
                     <br />                    
-                    <h:form>
+                    <h:form enctype="multipart/form-data">
                         <h3><font color="#4682B4">Nom du rêve</font></h3>
                         <p:inputTextarea id="nomreve" value="#{userLoginView.nomreve}" rows="1" cols="33" label="nomreve"/>
                         <br />
                         <h3><font color="#4682B4">Description du rêve</font></h3>
                         <p:inputTextarea id="description" value="#{userLoginView.descriptionreve}" rows="6" cols="66" label="description"/>
                         <br />
-                        <p:growl id="messages" showDetail="true" />
- 
-                         <p:fileUpload value="#{fileUploadView.file}" mode="simple"/>
-                         <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadView.upload}" disabled="true" />
+                        <h3><font color="#4682B4">Choisissez une image</font></h3>
+                        <h3><font color="#FF0000">En maintenance</font></h3>
+                        <!--
+                        <h:form enctype="multipart/form-data">
+                        <p:fileUpload value="#{fileUploadView.file}" mode="simple"/>
+                        <h:commandButton id="btnSubmit" actionListener="#{fileUploadView.upload()}" value="Save">
+                        </h:commandButton> 
+                        </h:form>
+                        -->
+                        
+                        
                     </h:form>                    
-                    <p:commandButton value="Créer le rêve" action="#{userLoginView.insertionReve(fileUploadView.file.fileName)}" icon="ui-icon-star"></p:commandButton>
+                    <p:commandButton value="Créer le rêve" action="#{userLoginView.insertionReve()}" icon="ui-icon-star"></p:commandButton>
                         
 
                 </p:layoutUnit>    
