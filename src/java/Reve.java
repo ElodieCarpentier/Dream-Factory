@@ -32,6 +32,7 @@ public class Reve {
     private String validation = "";
     private String desc = "";
     private String image = "";
+    private String risque = "";
 
     public Reve(String nomReve, String desc, String image) {
         this.nomReve=nomReve;
@@ -79,6 +80,14 @@ public class Reve {
 
     public void setImage(String image) {
         this.image = image;
+    }
+    
+    public String getRisque() {
+        return risque;
+    }
+
+    public void setRisque(String risque) {
+        this.risque = risque;
     }
     
    

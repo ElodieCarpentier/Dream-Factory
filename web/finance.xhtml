@@ -89,16 +89,32 @@
                     </p:breadCrumb>
                     
                     <br />
-                    <table align="left">
-                        <tr>   
-                            <td style="color: #4682B4"><font size="5"><b>Gestion des finances</b></font></td>
-                        </tr>
-                        <tr>   
-                            <td>Tableau avec tous les rêves et leurs infos et on peut rentrer le coût</td>
-                        </tr>
-                       
-                    </table>
-                        
+                    
+                    <font size="5" style="color: #4682B4"><b>Gestion des risques</b></font>
+                    <br/>
+                    <br/>
+                                     
+
+                    <p:dataTable var="revefinance" value="#{dtReveView.createListFinance()}">
+            
+                    <p:column headerText="Nom du reve">
+                        <h:outputText value="#{revefinance.nomReve}" />
+                    </p:column>
+                    <p:column headerText="Description">
+                        <h:outputText value="#{revefinance.desc}" />
+                    </p:column>
+                    <p:column headerText="Risques">
+                        <h:outputText value="#{revefinance.risque}" />
+                    </p:column>
+                    <p:column headerText="Coût du rêve">
+                        <p:inputTextarea id="finance" value="#{userLoginView.revefinance}" rows="1" cols="33" label="revefinance"/>
+                    </p:column>   
+                    </p:dataTable>
+                    
+                    <br/>
+                    
+                    <p:commandButton value="Enregistrer les modifications" action="#" icon="ui-icon-disk"></p:commandButton>
+
                         
                     
                                         

@@ -29,6 +29,8 @@ public class UserLoginView{
     private String descriptionreve;
     
     private String risquereve;
+    
+    private String revefinance;
         
     private String image;
     
@@ -90,8 +92,16 @@ public class UserLoginView{
         return risquereve;
     }
 
-    public void setRisquereve(String nomreve) {
+    public void setRisquereve(String risquereve) {
         this.risquereve = risquereve;
+    }
+    
+    public String getRevefinance() {
+        return revefinance;
+    }
+
+    public void setRevefinance(String revefinance) {
+        this.revefinance = revefinance;
     }
 
     public String getDescriptionreve() {
