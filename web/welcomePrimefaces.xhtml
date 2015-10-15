@@ -18,7 +18,7 @@
         </h:head>
         
         
-        <h:body>
+        <h:body class="login">
             <h:form>
             <p:layout fullPage="true">
 
@@ -90,7 +90,7 @@
                 </p:layoutUnit>
                 </c:if>
                 
-                <c:if test="${userLoginView.username == 'tristesse'}">
+                <c:if test="${userLoginView.username == 'triste'}">
                 <p:layoutUnit position="west" size="210" header="Menu">   
                     <p:growl autoUpdate="true"/>     
                     <p:panelMenu style="width:200px">
@@ -159,9 +159,7 @@
                 
                 <div style="width: 20px; height: 20px;"></div>
                 
-                <c:if test="${userLoginView.username == 'joy'}">
-                    <div style="float: left;height:270px;overflow: auto; width: 600px">
-                        <br />
+                    <div style="float: left;height:400px;overflow: auto; width: 800px">
                         <center>Rêves créées récemment</center>
                         <br /> 
                         <p:contentFlow value="#{dtReveView.createListRisque()}" var="risque">
@@ -169,8 +167,7 @@
                             <div class="caption" style="color: #0404B4">#{risque.nomReve} <br/> #{risque.desc} </div>
                         </p:contentFlow>                      
                     </div>
-                     <div style="float: right;height:270px;overflow:auto; width: 600px">
-                        <br />
+                    <div style="float: right;height:400px;overflow:auto; width: 800px">
                         <center>Rêves Validés </center>
                         <br />
                        <p:contentFlow value="#{dtReveView.createListProto()}" var="proto">
@@ -178,8 +175,7 @@
                             <div class="caption" style="color: #0404B4">#{proto.nomReve} <br/> #{proto.desc}</div>
                         </p:contentFlow>
                     </div>
-                   <div style="height:270px;overflow:auto; width: 600px">
-                        <br />
+                    <div style="height:400px;overflow:auto; width: 800px">
                         <center>Rêve en attente de validation </center>
                         <br />
                        <p:contentFlow value="#{dtReveView.createListValide()}" var="valide">
@@ -187,7 +183,6 @@
                             <div class="caption" style="color: #0404B4">#{valide.nomReve} <br/> #{valide.desc}</div>
                         </p:contentFlow>
                     </div>
-                </c:if>
                 
                     
                 </p:layoutUnit>

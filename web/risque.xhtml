@@ -40,7 +40,7 @@
                         </tr> 
                         <tr>
                         <td>
-                            <p:commandLink action="#{userLoginView.logout()}" onclick="logout()">
+                            <p:commandLink action="#{userLoginView.logout()}">
                                 <h:graphicImage value="Resources/Exit.png" height="30" width="30" id="logout"/>
                                 <p:tooltip id="toolTipLogout" for="logout" value="Déconnexion" trackMouse="true" />
                             </p:commandLink>
@@ -107,25 +107,24 @@
                     <br/>
                     <br/>
                                      
-                    
+
                     <p:dataTable var="reverisque" value="#{dtReveView.createListRisque()}">
+            
                     <p:column headerText="Nom du reve">
                         <h:outputText value="#{reverisque.nomReve}" />
                     </p:column>
                     <p:column headerText="Description">
                         <h:outputText value="#{reverisque.desc}" />
-                    </p:column> 
-                    <p:column headerText="Risques antérieur">
-                        <h:outputText value="#{reverisque.risque}"/>
                     </p:column>
-                        <p:column headerText="Nouveaux Risque">
-                            <p:inputTextarea id="risque" value="#{userLoginView.risquereve}" rows="1" cols="33" label="risque"/>
-                        </p:column>
+                    <p:column headerText="Risques">
+                        <p:inputText id="risquereve" value="#{reverisque.risque}" label="risquereve"/>
+                    </p:column>
                         <p:column>
-                            <p:commandButton action="#{userLoginView.ajoutrisque(reverisque.nomReve)}" ajax="false" onclick="reloading2()" value="Enregister les risques"></p:commandButton>
+                            <p:commandButton actionListener="#{userLoginView.ajoutrisque(reverisque.nomReve, reverisque.risque)}" ajax="false" value="Enregistrer les risques" icon="ui-icon-check" onclick="reloading2()"></p:commandButton>
+                            <p:commandButton actionListener="#{userLoginView.envoiefinance(reverisque.nomReve)}" value="Envoyer en finances" icon="ui-icon-circle-close" onclick="reloading2()"></p:commandButton>          
                         </p:column>
+                         
                     </p:dataTable>
-                          
                     
                     <br/>
                     
@@ -149,8 +148,7 @@
     
     <script>
         function reloading2(){
-            
-          location.href="/risque.xhtml";
+          location.href="faces/risque.xhtml";
         }
         
     </script>

@@ -50,6 +50,11 @@ public class MenuView {
     public String prototype(){
         return "prototype";
     }
+    
+    public String monprofil(){
+        return "monprofil";
+    }
+    
      
     public void addMessage(String summary, String detail) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);

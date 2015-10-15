@@ -18,7 +18,7 @@
         </h:head>
         
         
-        <h:body class='back'>
+        <h:body class="login">
             <h:form>
             <p:layout fullPage="true">
 
@@ -69,7 +69,7 @@
                             <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person" id="monprofil"/>
                         </p:submenu>
                         <p:submenu label="Dream Lab">
-                            <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star"/>                            
+                            <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star" disabled="true"/>                            
                         </p:submenu>       
                     </p:panelMenu>
                 </p:layoutUnit>
@@ -84,7 +84,7 @@
                             <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person" id="monprofil"/>
                         </p:submenu>
                         <p:submenu label="Dream Lab">
-                            <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star"/>                            
+                            <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star" disabled="true"/>                            
                             <p:menuitem value="Gestion des risques" action="#{menuView.risque}" icon="ui-icon-notice"/>
                             <p:menuitem value="Gestion des finances" action="#{menuView.finance}" icon="ui-icon-suitcase"/>
                             <p:menuitem value="Validation de rêve" action="#{menuView.validationreve}" icon="ui-icon-check"/>
@@ -100,8 +100,7 @@
                 <p:layoutUnit position="center">
                     <p:breadCrumb>
                         <p:menuitem value="Accueil" action="#{userLoginView.lol}" />
-                        <p:menuitem value="Rêve créés" url="#" disabled="true"/>
-                        
+                        <p:menuitem value="Creation de reve" url="#{MenuView.creationreve}" disabled="true"/>
                     </p:breadCrumb>
                     
                     <br />
