@@ -86,27 +86,36 @@
                         
                     </p:breadCrumb>
                     
+
                     <table align="left">
                         <tr>   
                             <td style="color: #4682B4"><font size="5"><b>Rêve à valider</b></font></td>
-                        </tr>
-                        <td></td>                       
+                        </tr> 
+                        <td></td>
                         <tr>   
-                            <td style="color: #4682B4"><font size="3"><b>Nom du rêve</b></font></td>
+                            <td style="color: #4682B4"><font size="3"><b>Nom du rêve: </b></font></td>
                            
                         </tr>
                         <tr>   
-                            <td style="color: #4682B4"><font size="3"><b>Description du rêve</b></font></td>
-
+                            <td style="color: #4682B4"><font size="3"><b>Description du rêve: </b></font></td>
                         </tr>
+                        <tr>
+                        <td>
+                         
+                        <h:form>
+                            <h3><font color="#4682B4">Liste des risques</font></h3>
+                                <p:inputTextarea id="risque" value="" rows="5" cols="66" label="risque"/>
+                        </h:form> 
+                        </td>
+                        </tr>
+                        <tr>
+                        <td>
+                           <p:commandButton value="Enregistrer les risques" action="#" icon="ui-icon-check"></p:commandButton> 
+                        </td>
+                    </tr>
                     </table>
-                    
-                    <h:form>
-                        <h2><font color="#4682B4">Liste des risques</font></h2>
-                        <p:inputTextarea id="risque" value="" rows="1" cols="33" label="risque"/>
-                    </h:form>                    
-                    <p:commandButton value="Enregistrer les risques" action="#" icon="ui-icon-check"></p:commandButton>    
-                        
+                       
+                      
                     
                                         
                 
