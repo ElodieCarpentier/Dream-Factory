@@ -35,12 +35,16 @@ public class MenuView {
         return "validationreve2";
     }
     
-     public String risque(){
+    public String risque(){
         return "risque";
     }
      
-     public String risque2(){
+    public String risque2(){
         return "risque2";
+    }
+    
+    public String finance(){
+        return "finance";
     }
      
     public void addMessage(String summary, String detail) {
