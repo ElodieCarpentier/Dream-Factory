@@ -18,7 +18,7 @@
         </h:head>
         
         
-        <h:body>
+        <h:body class="login">
             <h:form>
             <p:layout fullPage="true">
                  <p:layoutUnit position="north" size="140" resizable="true" closable="true" collapsible="true" class='header'>
@@ -77,7 +77,7 @@
                             <p:menuitem value="Gestion des prototypes" action="#{menuView.prototype}" icon="ui-icon-clipboard"/>
                         </p:submenu>
                         <p:submenu label="Administration">
-                            <p:menuitem value="Gestion des users" action="#{menuView.utilisateur}" icon="ui-icon-star"/>
+                            <p:menuitem value="Gestion des users" action="#{menuView.utilisateur}" icon="ui-icon-star" disabled="true"/>
                         </p:submenu>        
                     </p:panelMenu>    
                 </p:layoutUnit>
@@ -86,7 +86,7 @@
                 <p:layoutUnit position="center">
                  <p:breadCrumb>
                      <p:menuitem value="Accueil" action="#{userLoginView.lol}"/>
-                     <p:menuitem value="Utilisateurs" disabled="true" />
+                     <p:menuitem value="Utilisateurs" action="#{menuView.utilisateur}" disabled="true"/>
                 </p:breadCrumb>
                     
         <p:dataGrid var="users" value="#{dtBasicView.createList()}" columns="3"

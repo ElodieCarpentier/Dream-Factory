@@ -18,7 +18,7 @@
         </h:head>
         
         
-        <h:body class='back'>
+        <h:body class="login">
             <h:form>
             
                 <p:layout fullPage="true">
@@ -65,7 +65,7 @@
                     <p:growl autoUpdate="true"/>     
                     <p:panelMenu style="width:200px">
                         <p:submenu label="Dream Factory">
-                            <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person" id="monprofil"/>
+                            <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person" id="monprofil" disabled="true"/>
                         </p:submenu>
                         <p:submenu label="Dream Lab">
                             <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star"/>                            
@@ -79,7 +79,7 @@
                     <p:growl autoUpdate="true"/>     
                     <p:panelMenu style="width:200px">
                         <p:submenu label="Dream Factory">
-                            <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person" id="monprofil"/>
+                            <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person" id="monprofil" disabled="true"/>
                         </p:submenu>
                         <p:submenu label="Dream Lab">
                             <p:menuitem value="Gestion des risques" action="#{menuView.risque}" icon="ui-icon-notice"/>                            
@@ -88,12 +88,12 @@
                 </p:layoutUnit>
                 </c:if>
                 
-                <c:if test="${userLoginView.username == 'tristesse'}">
+                <c:if test="${userLoginView.username == 'triste'}">
                 <p:layoutUnit position="west" size="210" header="Menu">   
                     <p:growl autoUpdate="true"/>     
                     <p:panelMenu style="width:200px">
                         <p:submenu label="Dream Factory">
-                            <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person" id="monprofil"/>
+                            <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person" id="monprofil" disabled="true"/>
                         </p:submenu>
                         <p:submenu label="Dream Lab">
                             <p:menuitem value="Gestion des finances" action="#{menuView.finance}" icon="ui-icon-suitcase"/>                            
@@ -107,7 +107,7 @@
                     <p:growl autoUpdate="true"/>     
                     <p:panelMenu style="width:200px">
                         <p:submenu label="Dream Factory">
-                            <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person" id="monprofil"/>
+                            <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person" id="monprofil" disabled="true"/>
                         </p:submenu>
                         <p:submenu label="Dream Lab">
                             <p:menuitem value="Validation de rêve" action="#{menuView.validationreve}" icon="ui-icon-check"/>                            
@@ -121,7 +121,7 @@
                     <p:growl autoUpdate="true"/>     
                     <p:panelMenu style="width:200px">
                         <p:submenu label="Dream Factory">
-                            <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person" id="monprofil"/>
+                            <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person" id="monprofil" disabled="true"/>
                         </p:submenu>
                         <p:submenu label="Dream Lab">
                             <p:menuitem value="Gestion des prototypes" action="#{menuView.prototype}" icon="ui-icon-clipboard"/>                            
@@ -136,7 +136,7 @@
      
                     <p:panelMenu style="width:200px">
                         <p:submenu label="Dream Factory">
-                            <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person" id="monprofil"/>
+                            <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person" id="monprofil" disabled="true"/>
                         </p:submenu>
                         <p:submenu label="Dream Lab">
                             <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star"/>                            
@@ -155,7 +155,7 @@
                 <p:layoutUnit position="center">
                     <p:breadCrumb>
                         <p:menuitem value="Accueil" action="#{userLoginView.lol}" />
-                        <p:menuitem value="Mon profil" url="#" disabled="true"/>
+                        <p:menuitem value="Mon profil" url="#{menuView.monprofil}" disabled="true"/>
                         
                     </p:breadCrumb>
                     

@@ -18,7 +18,7 @@
         </h:head>
         
         
-        <h:body class='back'>
+        <h:body class="login">
             <h:form>
             <p:layout fullPage="true">
 
@@ -100,9 +100,8 @@
                 <p:layoutUnit position="center">
                     <p:breadCrumb>
                         <p:menuitem value="Accueil" action="#{userLoginView.lol}" />
-                        <p:menuitem value="Reve Créés" action="#{menuView.creationreve}" />
-                        <p:menuitem value="Creation de rêve" url="#" disabled="true"/>
-                        
+                        <p:menuitem value="Creation de rêve" url="#{MenuView.creationreve}"/>
+                        <p:menuitem value="Nouveau rêve" url="#{MenuView.creationreve2}" disabled="true"/>
                     </p:breadCrumb>
                     
                     <br />
