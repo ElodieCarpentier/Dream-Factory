@@ -41,7 +41,8 @@
                         <tr>
                         <td>
                             <p:commandLink action="#{userLoginView.logout()}">
-                                <h:graphicImage value="Resources/Exit.png" height="30" width="30"/>
+                                <h:graphicImage value="Resources/Exit.png" height="30" width="30" id="logout"/>
+                                <p:tooltip id="toolTipLogout" for="logout" value="Déconnexion" trackMouse="true" />
                             </p:commandLink>
                          </td>
                         </tr>
@@ -68,8 +69,8 @@
                         </p:submenu>
                         <p:submenu label="Dream Lab">
                             <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star"/>                            
-                            <p:menuitem value="Gestion des risques" action="#{menuView.risque}" icon="ui-icon-check"/>
-                            <p:menuitem value="Gestion des finances" action="#{menuView.finance}" icon="ui-icon-check" disabled="true"/>
+                            <p:menuitem value="Gestion des risques" action="#{menuView.risque}" icon="ui-icon-notice"/>
+                            <p:menuitem value="Gestion des finances" action="#{menuView.finance}" icon="ui-icon-suitcase" disabled="true"/>
                             <p:menuitem value="Validation de rêve" action="#{menuView.validationreve}" icon="ui-icon-check"/>
                         </p:submenu>
                         <p:submenu label="Administration">
@@ -90,17 +91,12 @@
                     <br />
                     <table align="left">
                         <tr>   
-                            <td style="color: #4682B4"><font size="5"><b>Gestion des risques</b></font></td>
+                            <td style="color: #4682B4"><font size="5"><b>Gestion des finances</b></font></td>
                         </tr>
                         <tr>   
-                            <td>Insertion des rêves à valider</td>
+                            <td>Tableau avec tous les rêves et leurs infos et on peut rentrer le coût</td>
                         </tr>
-                        <tr>   
-                            <td>A coté de chaque rêve à valider il y a un bouton pour éditer les risques</td>
-                        </tr>
-                        <td>
-                            <p:commandButton value="Editer les risques" action="#{menuView.risque2}" icon="ui-icon-flag"></p:commandButton>
-                        </td>                        
+                       
                     </table>
                         
                         

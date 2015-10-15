@@ -41,7 +41,8 @@
                          <tr>
                         <td>
                             <p:commandLink action="#{userLoginView.logout()}">
-                                <h:graphicImage value="Resources/Exit.png" height="30" width="30"/>
+                                <h:graphicImage value="Resources/Exit.png" height="30" width="30" id="logout"/>
+                                <p:tooltip id="toolTipLogout" for="logout" value="Déconnexion" trackMouse="true" />
                             </p:commandLink>
                          </td>
                         </tr>
@@ -69,8 +70,8 @@
                         </p:submenu>
                         <p:submenu label="Dream Lab">
                             <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star"/>                            
-                            <p:menuitem value="Gestion des risques" action="#{menuView.risque}" icon="ui-icon-check"/>
-                            <p:menuitem value="Gestion des finances" action="#{menuView.finance}" icon="ui-icon-check"/>
+                            <p:menuitem value="Gestion des risques" action="#{menuView.risque}" icon="ui-icon-notice"/>
+                            <p:menuitem value="Gestion des finances" action="#{menuView.finance}" icon="ui-icon-suitcase"/>
                             <p:menuitem value="Validation de rêve" action="#{menuView.validationreve}" icon="ui-icon-check"/>
                         </p:submenu>
                         <p:submenu label="Administration">

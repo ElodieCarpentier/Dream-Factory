@@ -27,6 +27,8 @@ public class UserLoginView{
     private String nomreve;
     
     private String descriptionreve;
+    
+    private String risquereve;
         
     private String image;
     
@@ -82,6 +84,14 @@ public class UserLoginView{
 
     public void setNomreve(String nomreve) {
         this.nomreve = nomreve;
+    }
+    
+    public String getRisquereve() {
+        return risquereve;
+    }
+
+    public void setRisquereve(String nomreve) {
+        this.risquereve = risquereve;
     }
 
     public String getDescriptionreve() {

@@ -122,5 +122,35 @@ public class ReveService {
         }
         return list;
     }
+         
+    public List<Reve> createListRisque()throws SQLException, ClassNotFoundException{
+        List<Reve> list= new ArrayList<Reve>();
+        Connection con = null;
+        PreparedStatement ps = null;
+        Class.forName( "com.mysql.jdbc.Driver" );
+        String url = "jdbc:mysql://localhost/dreamfactory";
+        String login= "root";
+        String passwd="";
+        try {
+            con = DriverManager.getConnection(url, login, passwd);
+            ps = con.prepareStatement(
+                    "select IDREVE, DESCRIPTION_REVE, VALIDATION, IMAGE_REVE FROM reve where VALIDATION = ?");
+            ps.setString(1, "en risque");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) // found
+            {
+                
+                nom=rs.getString("IDREVE");
+                desc=rs.getString("DESCRIPTION_REVE");
+                image="Resources/"+rs.getString("IMAGE_REVE");
+                list.add(new Reve(nom,desc,image));
+            }
+            System.out.println(list);
+             } catch (Exception ex) {
+            System.out.println("Error in login() -->" + ex.getMessage());
+            
+        }
+        return list;
+    }     
         
 }
