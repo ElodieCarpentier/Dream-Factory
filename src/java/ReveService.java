@@ -48,7 +48,7 @@ public class ReveService {
             con = DriverManager.getConnection(url, login, passwd);
             ps = con.prepareStatement(
                     "select IDREVE, DESCRIPTION_REVE, IMAGE_REVE FROM reve where VALIDATION= ?");
-            ps.setString(1, "en cours");
+            ps.setString(1, "en risque");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) // found
             {
