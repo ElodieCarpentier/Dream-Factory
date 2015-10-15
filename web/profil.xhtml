@@ -3,13 +3,13 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     
     <f:view contentType="text/html">
         
         <h:head>
-            <link rel="stylesheet" href="font-awesome-4.4.0/css/font-awesome.min.css"/>
             <link rel="stylesheet" href="style.css"/>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
@@ -21,8 +21,7 @@
         <h:body class="login">
             <h:form>
             <p:layout fullPage="true">
-
-                <p:layoutUnit position="north" size="140" resizable="true" closable="true" collapsible="true" class='header'>
+                 <p:layoutUnit position="north" size="140" resizable="true" closable="true" collapsible="true" class='header'>
                     <i>
                         <center>
                         <img src="http://images.cooltext.com/4433570.png"/>
@@ -58,22 +57,9 @@
                     </span>
                         </center>
                         </i>
+                        
+                    
                 </p:layoutUnit>
-
-                
-                <c:if test="${userLoginView.username == 'joy'}">
-                <p:layoutUnit position="west" size="210" header="Menu">   
-                    <p:growl autoUpdate="true"/>     
-                    <p:panelMenu style="width:200px">
-                        <p:submenu label="Dream Factory">
-                            <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person" id="monprofil"/>
-                        </p:submenu>
-                        <p:submenu label="Dream Lab">
-                            <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star"/>                            
-                        </p:submenu>       
-                    </p:panelMenu>
-                </p:layoutUnit>
-                </c:if>
                 
                 <c:if test="${userLoginView.username == 'admin'}">
                 <p:layoutUnit position="west" size="210" header="Menu">   
@@ -91,7 +77,7 @@
                             <p:menuitem value="Gestion des prototypes" action="#{menuView.prototype}" icon="ui-icon-clipboard"/>
                         </p:submenu>
                         <p:submenu label="Administration">
-                            <p:menuitem value="Gestion des users" action="#{menuView.utilisateur}" icon="ui-icon-star"/>
+                            <p:menuitem value="Gestion des users" action="#{menuView.utilisateur}" icon="ui-icon-star" disabled="true"/>
                         </p:submenu>        
                     </p:panelMenu>    
                 </p:layoutUnit>
@@ -100,37 +86,30 @@
                 <p:layoutUnit position="center">
                     <p:breadCrumb>
                         <p:menuitem value="Accueil" action="#{userLoginView.lol}" />
-                        <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}"/>
-                        <p:menuitem value="Nouveau rêve" action="#{menuView.creationreve2}" disabled="true"/>
+                        <p:menuitem value="Gestion des users" action="#{menuView.users}"/>
+                        <p:menuitem value="Profil" url="#" disabled="true"/>
+                        
                     </p:breadCrumb>
                     
                     <br />
-                    <td style="color: #4682B4"><font size="5"><b>Nouveau rêve</b></font></td>
-                    <br />                    
-                    <h:form enctype="multipart/form-data">
-                        <h3><font color="#4682B4">Nom du rêve</font></h3>
-                        <p:inputTextarea id="nomreve" value="#{userLoginView.nomreve}" rows="1" cols="33" label="nomreve"/>
-                        <br />
-                        <h3><font color="#4682B4">Description du rêve</font></h3>
-                        <p:inputTextarea id="description" value="#{userLoginView.descriptionreve}" rows="6" cols="66" label="description"/>
-                        <br />
-                        <h3><font color="#4682B4">Choisissez une image</font></h3>
-                        <h3><font color="#FF0000">En maintenance</font></h3>
-                        <!--
-                        <h:form enctype="multipart/form-data">
-                        <p:fileUpload value="#{fileUploadView.file}" mode="simple"/>
-                        <h:commandButton id="btnSubmit" actionListener="#{fileUploadView.upload()}" value="Save">
-                        </h:commandButton> 
-                        </h:form>
-                        -->
-                        
-                        
-                    </h:form>                    
-                    <p:commandButton value="Créer le rêve" action="#{userLoginView.insertionReve()}" ajax="false" onclick="reloading()" icon="ui-icon-star"></p:commandButton>
-                        
+                    <table>
+                        <tr>   
+                            <td style="color: #4682B4"><font size="5"><b>Mon profil</b></font></td>
+                        </tr>
+                        <tr>   
+                            <td><img src="#{userLoginView.imageUser}" width="150"></img></td>
+                        </tr>
+                        <tr>
+                            <td><b>Identifiant: </b></td>
+                            <td>#{userLoginView.nomUser}</td>  
+                        </tr>
+                        <tr>
+                            <td><b>Statut: </b></td>
+                            <td>#{userLoginView.statutUser}</td>
+                        </tr>
 
-                </p:layoutUnit>    
-                
+                    </table>
+                </p:layoutUnit>
                 <p:layoutUnit position="south" size="40" closable="true" collapsible="true">
                     Informations de connexion
                 </p:layoutUnit>
@@ -141,15 +120,10 @@
                 
         </h:body>
     </f:view>
+    
     <script>
-        function reloading(){
-            location.href="faces/creationreve2.xhtml";
-        }
                 function logout(){
             location.href="index.xhtml";
         }
-    </script>
-    
-
+        </script>
 </html>
-

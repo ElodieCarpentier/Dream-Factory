@@ -55,6 +55,10 @@ public class MenuView {
         return "monprofil";
     }
     
+    public String users(){
+        return "user";
+    }
+    
      
     public void addMessage(String summary, String detail) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);

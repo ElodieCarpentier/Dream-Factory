@@ -34,11 +34,12 @@ public class Reve {
     private String image = "";
     private String risque = "";
 
-    public Reve(String nomReve, String desc, String image, String risque) {
+    public Reve(String nomReve, String desc, String image, String risque, float cout) {
         this.nomReve=nomReve;
         this.desc=desc;
         this.image=image;
         this.risque=risque;
+        this.cout=cout;
     }
     
 

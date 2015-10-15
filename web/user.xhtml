@@ -99,7 +99,9 @@
         <p:panel style="text-align:center;">
             <h:panelGrid columns="1" style="width:100%">
                 
-                <p:graphicImage value="#{users.image}" width="130px" height="120px"/> 
+                <p:commandLink action="#{userLoginView.profil(users.image,users.nom,users.statut)}">
+                    <h:graphicImage value="#{users.image}" height="120px" width="130px"/>
+                            </p:commandLink>
  
                 <h:outputText value="#{users.nom}"/>
  
@@ -124,5 +126,9 @@
         </h:body>
     </f:view>
     
-
+    <script>
+                function logout(){
+            location.href="index.xhtml";
+        }
+        </script>
 </html>

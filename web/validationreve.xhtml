@@ -118,7 +118,10 @@
                     <p:column headerText="Risques">
                         <h:outputText value="#{validation.risque}" />
                     </p:column>
-                    <p:column headerText="Coût du rêve">
+                    <p:column headerText="Cout du rêve">
+                        <h:outputText value="#{validation.cout}" />
+                    </p:column>    
+                    <p:column>
                         <p:commandButton id="valide" value="Valider" action="#{dtReveView.valider(validation.nomReve)}" ajax="false" onclick="reloading3()" icon="ui-icon-check"></p:commandButton>
                         <p:commandButton id="nonvalide" value="Ne pas valider" action="#{dtReveView.nonvalider(validation.nomReve)}" ajax="false" onclick="reloading3()" icon="ui-icon-circle-close"></p:commandButton>
                     </p:column>   
@@ -126,7 +129,7 @@
                     
                     <br/>
                     
-                    <p:commandButton value="Enregistrer les modifications" action="#" icon="ui-icon-disk"></p:commandButton>
+            
                     
                 </p:layoutUnit>    
                 
@@ -144,6 +147,9 @@
     <script>
         function reloading3(){
             location.href="faces/validationreve.xhtml";
+        }
+                function logout(){
+            location.href="index.xhtml";
         }
         </script>
 </html>

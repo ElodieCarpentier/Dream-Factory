@@ -122,11 +122,11 @@
                         <h:outputText value="#{revefinance.risque}" />
                     </p:column>
                     <p:column headerText="Coût du rêve">
-                        <p:inputTextarea id="finance" value="#{userLoginView.revefinance}" rows="1" cols="33" label="revefinance"/>
+                        <p:inputTextarea id="finance" value="#{revefinance.cout}" rows="1" cols="33" label="revefinance"/>
                     </p:column> 
                     <p:column headerText="Coût du rêve">
-                        <p:commandButton value="Enregistrer le coût" action="#" icon="ui-icon-disk"></p:commandButton>
-                        <p:commandButton value="Envoyer en validation" action="#" icon="ui-icon-circle-arrow-e"></p:commandButton>
+                        <p:commandButton value="Enregistrer le coût" action="#{dtReveView.ajoutcout(revefinance.nomReve, revefinance.cout)}" ajax="false" onclick="reloading4()" icon="ui-icon-disk"></p:commandButton>
+                        <p:commandButton value="Envoyer en validation" action="#{dtReveView.envoievalidation(revefinance.nomReve)}" ajax="false" onclick="reloading4()" icon="ui-icon-circle-arrow-e"></p:commandButton>
                     </p:column> 
                     </p:dataTable>
                     
@@ -145,6 +145,13 @@
         </h:body>
     </f:view>
     
-
+    <script>
+        function reloading4(){
+            location.href="faces/finance.xhtml"
+        }
+                function logout(){
+            location.href="index.xhtml";
+        }
+        </script>
 </html>
 

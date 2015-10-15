@@ -34,6 +34,12 @@ public class UserLoginView{
     
     private String validation="en risque";
     
+    private String imageUser;
+    
+    private String nomUser;
+    
+    private String statutUser;
+    
 
     public void setValidation(String validation) {
         this.validation = validation;
@@ -100,7 +106,33 @@ public class UserLoginView{
     public void setDescriptionreve(String descriptionreve) {
         this.descriptionreve = descriptionreve;
     }
+
+    public String getImageUser() {
+        return imageUser;
+    }
+
+    public void setImageUser(String imageUser) {
+        this.imageUser = imageUser;
+    }
+
+    public String getNomUser() {
+        return nomUser;
+    }
+
+    public void setNomUser(String nomUser) {
+        this.nomUser = nomUser;
+    }
+
+    public String getStatutUser() {
+        return statutUser;
+    }
+
+    public void setStatutUser(String statutUser) {
+        this.statutUser = statutUser;
+    }
    
+    
+    
     public void login(ActionEvent event) throws SQLException, ClassNotFoundException {
         RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage message = null;
@@ -160,6 +192,14 @@ public class UserLoginView{
     public String monprofil(){
         return "monprofil";
     }
+    
+    public String profil(String image, String nom, String statut){
+        this.imageUser=image;
+        this.nomUser=nom;
+        this.statutUser=statut;
+        return "profil";
+    }
+    
     public void logout(){
         username="";
         password="";

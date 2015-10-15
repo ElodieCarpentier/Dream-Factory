@@ -36,6 +36,8 @@ public class ReveService {
     public String validation;
     public String image;
     public String risque;
+    public int finance;
+    
     
         public List<Reve> createList()throws SQLException, ClassNotFoundException{
         List<Reve> list= new ArrayList<Reve>();
@@ -56,7 +58,8 @@ public class ReveService {
                 nom=rs.getString("IDREVE");
                 desc=rs.getString("DESCRIPTION_REVE");
                 image="Resources/"+rs.getString("IMAGE_REVE");
-                list.add(new Reve(nom,desc,image,""));
+                
+                list.add(new Reve(nom,desc,image,"",0));
             }
             System.out.println(list);
              } catch (Exception ex) {
@@ -85,7 +88,8 @@ public class ReveService {
                 nom=rs.getString("IDREVE");
                 desc=rs.getString("DESCRIPTION_REVE");
                 image="Resources/"+rs.getString("IMAGE_REVE");
-                list.add(new Reve(nom,desc,image,""));
+                
+                list.add(new Reve(nom,desc,image,"",0));
             }
             System.out.println(list);
              } catch (Exception ex) {
@@ -115,7 +119,8 @@ public class ReveService {
                 nom=rs.getString("IDREVE");
                 desc=rs.getString("DESCRIPTION_REVE");
                 image="Resources/"+rs.getString("IMAGE_REVE");
-                list.add(new Reve(nom,desc,image,""));
+                
+                list.add(new Reve(nom,desc,image,"",0));
             }
             System.out.println(list);
              } catch (Exception ex) {
@@ -146,7 +151,8 @@ public class ReveService {
                 desc=rs.getString("DESCRIPTION_REVE");
                 image="Resources/"+rs.getString("IMAGE_REVE");
                 risque=rs.getString("RISQUE_REVE");
-                list.add(new Reve(nom,desc,image,risque));
+                
+                list.add(new Reve(nom,desc,image,risque,0));
                 reinitialisation();
             }
             System.out.println(list);
@@ -168,7 +174,7 @@ public class ReveService {
         try {
             con = DriverManager.getConnection(url, login, passwd);
             ps = con.prepareStatement(
-                    "select IDREVE, DESCRIPTION_REVE, VALIDATION, IMAGE_REVE, RISQUE_REVE FROM reve where VALIDATION = ?");
+                    "select IDREVE, DESCRIPTION_REVE, VALIDATION, IMAGE_REVE, RISQUE_REVE, COUT FROM reve where VALIDATION = ?");
             ps.setString(1, "en finance");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) // found
@@ -178,8 +184,9 @@ public class ReveService {
                 desc=rs.getString("DESCRIPTION_REVE");
                 image="Resources/"+rs.getString("IMAGE_REVE");
                 risque=rs.getString("RISQUE_REVE");
+                finance=rs.getInt("COUT");
                 
-                list.add(new Reve(nom,desc,image,risque));
+                list.add(new Reve(nom,desc,image,risque,finance));
             }
             System.out.println(list);
              } catch (Exception ex) {
@@ -200,7 +207,7 @@ public class ReveService {
         try {
             con = DriverManager.getConnection(url, login, passwd);
             ps = con.prepareStatement(
-                    "select IDREVE, DESCRIPTION_REVE, VALIDATION, IMAGE_REVE, RISQUE_REVE FROM reve where VALIDATION = ?");
+                    "select IDREVE, DESCRIPTION_REVE, VALIDATION, IMAGE_REVE, RISQUE_REVE, COUT FROM reve where VALIDATION = ?");
             ps.setString(1, "valide");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) // found
@@ -210,8 +217,9 @@ public class ReveService {
                 desc=rs.getString("DESCRIPTION_REVE");
                 image="Resources/"+rs.getString("IMAGE_REVE");
                 risque=rs.getString("RISQUE_REVE");
+                finance=rs.getInt("COUT");
                 
-                list.add(new Reve(nom,desc,image,risque));
+                list.add(new Reve(nom,desc,image,risque,finance));
             }
             System.out.println(list);
              } catch (Exception ex) {
@@ -232,7 +240,7 @@ public class ReveService {
         try {
             con = DriverManager.getConnection(url, login, passwd);
             ps = con.prepareStatement(
-                    "select IDREVE, DESCRIPTION_REVE, VALIDATION, IMAGE_REVE, RISQUE_REVE FROM reve where VALIDATION = ?");
+                    "select IDREVE, DESCRIPTION_REVE, VALIDATION, IMAGE_REVE, RISQUE_REVE, COUT FROM reve where VALIDATION = ?");
             ps.setString(1, "proto");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) // found
@@ -242,8 +250,9 @@ public class ReveService {
                 desc=rs.getString("DESCRIPTION_REVE");
                 image="Resources/"+rs.getString("IMAGE_REVE");
                 risque=rs.getString("RISQUE_REVE");
+                finance=rs.getInt("COUT");
                 
-                list.add(new Reve(nom,desc,image,risque));
+                list.add(new Reve(nom,desc,image,risque,finance));
             }
             System.out.println(list);
              } catch (Exception ex) {
@@ -412,7 +421,7 @@ public class ReveService {
             
              if (rs2.next()) // found
             {
-                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Les risques ont été enregistrés avec succès ","");
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Le risque a bien été enregistrés avec succès ","");
              }
              else{
                  message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur, les informations n'ont pas été enregistrées","");   
@@ -426,6 +435,178 @@ public class ReveService {
              }
         context.addMessage(null, message2);
         reinitialisation();
+        
+    }
+    public void envoievalidation(String nomdureve){
+        FacesContext context = FacesContext.getCurrentInstance();
+        FacesMessage message2 = null;
+        Connection con = null;
+        Statement ps = null;
+        PreparedStatement ps2= null;
+        try
+        {
+        Class.forName( "com.mysql.jdbc.Driver" );
+        }
+         catch (Exception ex) {
+            System.out.println("Error in login() -->" + ex.getMessage());
+             }
+            
+        String url = "jdbc:mysql://localhost/dreamfactory";
+        String login= "root";
+        String passwd="";
+        try {
+            con = DriverManager.getConnection(url, login, passwd);
+            ps = con.createStatement();
+            String sql= "UPDATE reve SET COUT='"+finance+"', VALIDATION='valide' WHERE IDREVE='"+nomdureve+"'";
+            ps.executeUpdate(sql);
+            ps2= con.prepareStatement("Select * from reve where COUT=? and VALIDATION=?");
+            ps2.setInt(1,finance);
+            ps2.setString(2,"valide");
+            ResultSet rs2 = ps2.executeQuery();
+            
+             if (rs2.next()) // found
+            {
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Le rêve à été envoyé au département de validation ","");
+             }
+             else{
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur, le rêve n'a pas été envoyé","");   
+             }
+             }
+           
+           catch (Exception ex) {
+            System.out.println("Error in login() -->" + ex.getMessage());
+            
+          
+             }
+        context.addMessage(null, message2);
+        
+    }
+    public void ajoutcout(String nomdureve,float money){
+        FacesContext context = FacesContext.getCurrentInstance();
+        FacesMessage message2 = null;
+        Connection con = null;
+        Statement ps = null;
+        PreparedStatement ps2= null;
+        try
+        {
+        Class.forName( "com.mysql.jdbc.Driver" );
+        }
+         catch (Exception ex) {
+            System.out.println("Error in login() -->" + ex.getMessage());
+             }
+            
+        String url = "jdbc:mysql://localhost/dreamfactory";
+        String login= "root";
+        String passwd="";
+        try {
+            con = DriverManager.getConnection(url, login, passwd);
+            ps = con.createStatement();
+            String sql= "UPDATE reve SET COUT="+money+" WHERE IDREVE='"+nomdureve+"'";
+            ps.executeUpdate(sql);
+            ps2= con.prepareStatement("Select * from reve where COUT="+money+"");
+            ResultSet rs2 = ps2.executeQuery();
+            
+             if (rs2.next()) // found
+            {
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Le cout a bien été enregistrés avec succès ","");
+             }
+             else{
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur, les informations n'ont pas été enregistrées","");   
+             }
+             }
+           
+           catch (Exception ex) {
+            System.out.println("Error in login() -->" + ex.getMessage());
+          
+             }
+        context.addMessage(null, message2);
+        reinitialisation();
+        
+    }
+     public void acceptation(String nomdureve){
+        FacesContext context = FacesContext.getCurrentInstance();
+        FacesMessage message2 = null;
+        Connection con = null;
+        Statement ps = null;
+        PreparedStatement ps2= null;
+        try
+        {
+        Class.forName( "com.mysql.jdbc.Driver" );
+        }
+         catch (Exception ex) {
+            System.out.println("Error in login() -->" + ex.getMessage());
+             }
+            
+        String url = "jdbc:mysql://localhost/dreamfactory";
+        String login= "root";
+        String passwd="";
+        try {
+            con = DriverManager.getConnection(url, login, passwd);
+            ps = con.createStatement();
+            String sql= "UPDATE reve SET VALIDATION='approuvé' WHERE IDREVE='"+nomdureve+"'";
+            ps.executeUpdate(sql);
+            ps2= con.prepareStatement("Select * from reve where VALIDATION='approuvé' and IDREVE=?");
+            ps2.setString(1,nomdureve);
+            ResultSet rs2 = ps2.executeQuery();
+            
+             if (rs2.next()) // found
+            {
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Le prototype est approuvé et envoyé à l'usine ","");
+             }
+             else{
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur, le prototype n'a pas été envoyé","");   
+             }
+             }
+           
+           catch (Exception ex) {
+            System.out.println("Error in login() -->" + ex.getMessage());
+            
+          
+             }
+        context.addMessage(null, message2);
+        
+    }
+     public void refus(String nomdureve){
+        FacesContext context = FacesContext.getCurrentInstance();
+        FacesMessage message2 = null;
+        Connection con = null;
+        Statement ps = null;
+        PreparedStatement ps2= null;
+        try
+        {
+        Class.forName( "com.mysql.jdbc.Driver" );
+        }
+         catch (Exception ex) {
+            System.out.println("Error in login() -->" + ex.getMessage());
+             }
+            
+        String url = "jdbc:mysql://localhost/dreamfactory";
+        String login= "root";
+        String passwd="";
+        try {
+            con = DriverManager.getConnection(url, login, passwd);
+            ps = con.createStatement();
+            String sql= "UPDATE reve SET VALIDATION='refusé' WHERE IDREVE='"+nomdureve+"'";
+            ps.executeUpdate(sql);
+            ps2= con.prepareStatement("Select * from reve where VALIDATION='refusé' and IDREVE=?");
+            ps2.setString(1,nomdureve);
+            ResultSet rs2 = ps2.executeQuery();
+            
+             if (rs2.next()) // found
+            {
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Le prototype à été refusé","");
+             }
+             else{
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur, le prototype n'a pas pu être refusé","");   
+             }
+             }
+           
+           catch (Exception ex) {
+            System.out.println("Error in login() -->" + ex.getMessage());
+            
+          
+             }
+        context.addMessage(null, message2);
         
     }
     private void reinitialisation(){
