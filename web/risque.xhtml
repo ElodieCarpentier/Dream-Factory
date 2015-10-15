@@ -104,7 +104,7 @@
                         <h:outputText value="#{reverisque.desc}" />
                     </p:column>
                     <p:column headerText="Risques">
-                        <p:inputTextarea id="risquereve" value="#{reverisque.risque}" rows="5" cols="66" label="risquereve"/>
+                        <p:inputText id="risquereve" value="#{reverisque.risque}" label="risquereve"/>
                     </p:column>
                         <p:column>
                             <p:commandButton actionListener="#{userLoginView.ajoutrisque(reverisque.nomReve, reverisque.risque)}" ajax="false" value="Enregistrer les risques" icon="ui-icon-check" onclick="reloading2()"></p:commandButton>
