@@ -41,7 +41,7 @@
                         </tr> 
                         <tr>
                         <td>
-                            <p:commandLink action="#{userLoginView.logout()}">
+                            <p:commandLink action="#{userLoginView.logout()}" onclick="logout()">
                                 <h:graphicImage value="Resources/Exit.png" height="30" width="30" id="logout"/>
                                 <p:tooltip id="toolTipLogout" for="logout" value="Déconnexion" trackMouse="true" />
                             </p:commandLink>
@@ -119,8 +119,8 @@
                         <h:outputText value="#{validation.risque}" />
                     </p:column>
                     <p:column headerText="Coût du rêve">
-                        <p:commandButton id="valide" value="Valider" action="#{userLoginView.validation}" icon="ui-icon-check"></p:commandButton>
-                        <p:commandButton id="nonvalide" value="Ne pas valider" action="#{userLoginView.validation}" icon="ui-icon-circle-close"></p:commandButton>
+                        <p:commandButton id="valide" value="Valider" action="#{dtReveView.valider(validation.nomReve)}" ajax="false" onclick="reloading3()" icon="ui-icon-check"></p:commandButton>
+                        <p:commandButton id="nonvalide" value="Ne pas valider" action="#{dtReveView.nonvalider(validation.nomReve)}" ajax="false" onclick="reloading3()" icon="ui-icon-circle-close"></p:commandButton>
                     </p:column>   
                     </p:dataTable>
                     
@@ -141,6 +141,10 @@
         </h:body>
     </f:view>
     
-
+    <script>
+        function reloading3(){
+            location.href="faces/validationreve.xhtml";
+        }
+        </script>
 </html>
 

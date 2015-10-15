@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -250,7 +251,94 @@ public class ReveService {
             
         }
         return list;
-    } 
+    }
+    public void valider(String nomdureve){
+        FacesContext context = FacesContext.getCurrentInstance();
+        FacesMessage message2 = null;
+        Connection con = null;
+        Statement ps = null;
+        PreparedStatement ps2= null;
+        try
+        {
+        Class.forName( "com.mysql.jdbc.Driver" );
+        }
+         catch (Exception ex) {
+            System.out.println("Error in login() -->" + ex.getMessage());
+             }
+            
+        String url = "jdbc:mysql://localhost/dreamfactory";
+        String login= "root";
+        String passwd="";
+        try {
+            con = DriverManager.getConnection(url, login, passwd);
+            ps = con.createStatement();
+            String sql= "UPDATE reve SET VALIDATION='proto' WHERE IDREVE='"+nomdureve+"'";
+            ps.executeUpdate(sql);
+            ps2= con.prepareStatement("Select * from reve where VALIDATION='proto' and IDREVE=?");
+            ps2.setString(1,nomdureve);
+            ResultSet rs2 = ps2.executeQuery();
+            
+             if (rs2.next()) // found
+            {
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Les risques ont été enregistrés avec succès ","");
+             }
+             else{
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur, les informations n'ont pas été enregistrées","");   
+             }
+             }
+           
+           catch (Exception ex) {
+            System.out.println("Error in login() -->" + ex.getMessage());
+            
+          
+             }
+        context.addMessage(null, message2);
+        
+    }
+     public void nonvalider(String nomdureve){
+        FacesContext context = FacesContext.getCurrentInstance();
+        FacesMessage message2 = null;
+        Connection con = null;
+        Statement ps = null;
+        PreparedStatement ps2= null;
+        try
+        {
+        Class.forName( "com.mysql.jdbc.Driver" );
+        }
+         catch (Exception ex) {
+            System.out.println("Error in login() -->" + ex.getMessage());
+             }
+            
+        String url = "jdbc:mysql://localhost/dreamfactory";
+        String login= "root";
+        String passwd="";
+        try {
+            con = DriverManager.getConnection(url, login, passwd);
+            ps = con.createStatement();
+            String sql= "UPDATE reve SET VALIDATION='non' WHERE IDREVE='"+nomdureve+"'";
+            ps.executeUpdate(sql);
+            ps2= con.prepareStatement("Select * from reve where VALIDATION='non' and IDREVE=?");
+            ps2.setString(1,nomdureve);
+            ResultSet rs2 = ps2.executeQuery();
+            
+             if (rs2.next()) // found
+            {
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Les risques ont été enregistrés avec succès ","");
+             }
+             else{
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur, les informations n'ont pas été enregistrées","");   
+             }
+             }
+           
+           catch (Exception ex) {
+            System.out.println("Error in login() -->" + ex.getMessage());
+            
+          
+             }
+        context.addMessage(null, message2);
+        
+    }
+    
     private void reinitialisation(){
         this.risque="";
         this.nom="";
