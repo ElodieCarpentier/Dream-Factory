@@ -61,9 +61,10 @@
                     
                 </p:layoutUnit>
                 
+                <c:if test="${userLoginView.username == 'admin'}">
                 <p:layoutUnit position="west" size="210" header="Menu">   
                     <p:growl autoUpdate="true"/>
- 
+     
                     <p:panelMenu style="width:200px">
                         <p:submenu label="Dream Factory">
                             <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person" id="monprofil"/>
@@ -76,12 +77,11 @@
                             <p:menuitem value="Gestion des prototypes" action="#{menuView.prototype}" icon="ui-icon-clipboard"/>
                         </p:submenu>
                         <p:submenu label="Administration">
-                            <p:menuitem value="Gestion des users" action="#{menuView.utilisateur}" icon="ui-icon-star" disabled="true"/>
-                        </p:submenu>
-                            
-                    </p:panelMenu>                    
-                    
+                            <p:menuitem value="Gestion des users" action="#{menuView.utilisateur}" icon="ui-icon-star"/>
+                        </p:submenu>        
+                    </p:panelMenu>    
                 </p:layoutUnit>
+                </c:if>
 
                 <p:layoutUnit position="center">
                  <p:breadCrumb>
