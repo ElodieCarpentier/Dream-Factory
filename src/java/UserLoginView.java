@@ -34,7 +34,7 @@ public class UserLoginView{
     
     private String statut;
     
-    private String validation = "en cours";
+    private String validation = "en risque";
 
     public String getNom() {
         return nom;
@@ -90,7 +90,7 @@ public class UserLoginView{
         return risquereve;
     }
 
-    public void setRisquereve(String nomreve) {
+    public void setRisquereve(String risquereve) {
         this.risquereve = risquereve;
     }
 
@@ -228,6 +228,81 @@ public class UserLoginView{
         FacesContext.getCurrentInstance().addMessage(null, message2);
         
     }
+    
+    public void ajoutrisque(String nomdureve)throws SQLException, ClassNotFoundException{
+        RequestContext context = RequestContext.getCurrentInstance();
+        FacesMessage message2 = null;
+        Connection con = null;
+        Statement ps = null;
+        PreparedStatement ps2= null;
+        Class.forName( "com.mysql.jdbc.Driver" );
+        String url = "jdbc:mysql://localhost/dreamfactory";
+        String login= "root";
+        String passwd="";
+        try {
+            con = DriverManager.getConnection(url, login, passwd);
+            
+            ps = con.createStatement();
+            String sql= "UPDATE reve set RISQUE_REVE='"+risquereve+"' where reve.IDREVE='"+nomdureve+"'";
+            ps.executeUpdate(sql);
+            ps2= con.prepareStatement("Select * from reve where RISQUE_REVE=?");
+            ps2.setString(1,risquereve);
+            ResultSet rs2 = ps2.executeQuery();
+            
+             if (rs2.next()) // found
+            {
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Succès le risque à bien été rentrée","");
+             }
+             else{
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur le risque n'a pas été enregistré","");   
+             }
+             } catch (Exception ex) {
+            System.out.println("Error in login() -->" + ex.getMessage());
+            
+          
+        }
+        FacesContext.getCurrentInstance().addMessage(null, message2);
+        
+    }
+    
+    public void envoiefinance(String nomdureve)throws SQLException, ClassNotFoundException{
+        RequestContext context = RequestContext.getCurrentInstance();
+        FacesMessage message2 = null;
+        Connection con = null;
+        Statement ps = null;
+        PreparedStatement ps2= null;
+        Statement ps3=null;
+        Class.forName( "com.mysql.jdbc.Driver" );
+        String url = "jdbc:mysql://localhost/dreamfactory";
+        String login= "root";
+        String passwd="";
+        try {
+            con = DriverManager.getConnection(url, login, passwd);
+            ps = con.createStatement();
+            String sql= "UPDATE reve set RISQUE_REVE='"+risquereve+"',VALIDATION='en finance' where reve.IDREVE='"+nomdureve+"'";
+            ps.executeUpdate(sql);
+            
+            ps2= con.prepareStatement("Select * from reve where RISQUE_REVE=? and VALIDATION=?");
+            ps2.setString(1,risquereve);
+            ps2.setString(2, "en finance");
+            ResultSet rs2 = ps2.executeQuery();
+            
+             if (rs2.next()) // found
+            {
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Succès le reve à été envoyé en Finance","");
+             }
+             else{
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur le reve n'est pas passé en Finance","");   
+             }
+             } catch (Exception ex) {
+            System.out.println("Error in login() -->" + ex.getMessage());
+            
+          
+        }
+        FacesContext.getCurrentInstance().addMessage(null, message2);
+        
+    }
+    
     
 
 

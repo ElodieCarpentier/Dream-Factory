@@ -103,8 +103,13 @@
                         <h:outputText value="#{reverisque.desc}" />
                     </p:column>
                     <p:column headerText="Risques">
-                        <p:inputTextarea id="risque" value="#{userLoginView.risquereve}" rows="5" cols="66" label="risquereve"/>
-                    </p:column>   
+                        <p:inputTextarea id="risquereve" value="#{userLoginView.risquereve}" rows="5" cols="66" label="risquereve"/>
+                    </p:column>
+                        <p:column>
+                            <p:commandButton actionListener="#{userLoginView.ajoutrisque(reverisque.nomReve)}" ajax="true" value="Enregistrer les risques" icon="ui-icon-check" onclick="reloading()"></p:commandButton>
+                            <p:commandButton actionListener="#{userLoginView.envoiefinance(reverisque.nomReve)}" value="Envoyer en finances" icon="ui-icon-circle-close" onclick="reloading()"></p:commandButton>          
+                        </p:column>
+                         
                     </p:dataTable>
                     
                     <br/>
@@ -127,6 +132,12 @@
         </h:body>
     </f:view>
     
+    <script>
+        function reloading(){
+          location.href="faces/risque.xhtml";
+        }
+        
+    </script>
 
 </html>
 
