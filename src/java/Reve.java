@@ -28,7 +28,7 @@ import org.primefaces.context.RequestContext;
 public class Reve {
 
     private String nomReve ="";
-    private float cout = 0;
+    private float cout;
     private String validation = "";
     private String desc = "";
     private String image = "";

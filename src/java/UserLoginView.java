@@ -37,6 +37,16 @@ public class UserLoginView{
     private String statut;
     
     private String validation;
+    
+    private String reveproto;
+
+    public void setReveproto(String reveproto) {
+        this.reveproto = reveproto;
+    }
+
+    public String getReveproto() {
+        return reveproto;
+    }
 
     public void setValidation(String validation) {
         this.validation = validation;
