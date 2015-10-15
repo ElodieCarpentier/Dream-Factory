@@ -234,8 +234,6 @@ public class UserLoginView{
             
             ps3= con.prepareStatement("Select * from reve where IDREVE=?");
             ps3.setString(1,nomreve);
-            nomreve="";
-            descriptionreve="";
             ResultSet rs3 = ps3.executeQuery();
             
              if (rs3.next()) // found
@@ -252,28 +250,38 @@ public class UserLoginView{
             
           
         }
+        reinitialisation();
         FacesContext.getCurrentInstance().addMessage(null, message2);
         
     }
     
-    public void ajoutrisque(String nomdureve)throws SQLException, ClassNotFoundException{
+    public void ajoutrisque(String nomdureve, String risque){
         RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage message2 = null;
         Connection con = null;
         Statement ps = null;
         PreparedStatement ps2= null;
+        try
+        {
         Class.forName( "com.mysql.jdbc.Driver" );
+        }
+         catch (Exception ex) {
+            System.out.println("Error in login() -->" + ex.getMessage());
+          
+             }
+            
         String url = "jdbc:mysql://localhost/dreamfactory";
         String login= "root";
         String passwd="";
+        
         try {
-            con = DriverManager.getConnection(url, login, passwd);
             
+            con = DriverManager.getConnection(url, login, passwd);
             ps = con.createStatement();
-            String sql= "UPDATE reve set RISQUE_REVE='"+risquereve+"' where reve.IDREVE='"+nomdureve+"'";
+            String sql= "UPDATE reve set RISQUE_REVE='"+risque+"' where IDREVE='"+nomdureve+"'";
             ps.executeUpdate(sql);
             ps2= con.prepareStatement("Select * from reve where RISQUE_REVE=?");
-            ps2.setString(1,risquereve);
+            ps2.setString(1,risque);
             ResultSet rs2 = ps2.executeQuery();
             
              if (rs2.next()) // found
@@ -283,12 +291,15 @@ public class UserLoginView{
              else{
                  message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur le risque n'a pas été enregistré","");   
              }
-             } catch (Exception ex) {
+             }
+           
+           catch (Exception ex) {
             System.out.println("Error in login() -->" + ex.getMessage());
             
           
-        }
+             }
         FacesContext.getCurrentInstance().addMessage(null, message2);
+        reinitialisation();
         
     }
     
@@ -304,6 +315,7 @@ public class UserLoginView{
         String login= "root";
         String passwd="";
         try {
+            
             con = DriverManager.getConnection(url, login, passwd);
             ps = con.createStatement();
             String sql= "UPDATE reve set RISQUE_REVE='"+risquereve+"',VALIDATION='en finance' where reve.IDREVE='"+nomdureve+"'";
@@ -321,13 +333,21 @@ public class UserLoginView{
              else{
                  message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur le reve n'est pas passé en Finance","");   
              }
-             } catch (Exception ex) {
+            }
+            catch (Exception ex) {
             System.out.println("Error in login() -->" + ex.getMessage());
             
           
         }
         FacesContext.getCurrentInstance().addMessage(null, message2);
         
+    }
+    
+    private void reinitialisation(){
+        this.nomreve="";
+        this.descriptionreve="";
+        this.risquereve="";
+        this.nomreve="";
     }
     
     

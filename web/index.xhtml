@@ -43,9 +43,6 @@
                         </h:panelGrid>
                     </p:dialog>
 
-        <div id="boutonEntrer" style="display: none">
-            <center><p:commandButton value="Entrer dans le monde des rêves" update="growl" action="#{userLoginView.lol()}"/></center>
-        </div>
         </h:form>
     </h:body>
     
@@ -57,6 +54,7 @@
         else {
             PF('dlg').hide();
             $('#loginLink').fadeOut();
+            location.href="faces/welcomePrimefaces.xhtml";
             document.getElementById('boutonlogin').style.display ='none';
             document.getElementById('boutonEntrer').style.display ='block';
             

@@ -113,7 +113,7 @@
                         
                         
                     </h:form>                    
-                    <p:commandButton value="Créer le rêve" action="#{userLoginView.insertionReve()}" icon="ui-icon-star"></p:commandButton>
+                    <p:commandButton value="Créer le rêve" action="#{userLoginView.insertionReve()}" onclick="reloading()" icon="ui-icon-star"></p:commandButton>
                         
 
                 </p:layoutUnit>    
@@ -128,6 +128,12 @@
                 
         </h:body>
     </f:view>
+    <script>
+        function reloading(){
+            location.href="faces/creationreve2.xhtml";
+        }
+        
+    </script>
     
 
 </html>
