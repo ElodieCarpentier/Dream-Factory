@@ -135,7 +135,7 @@ public class ReveService {
         try {
             con = DriverManager.getConnection(url, login, passwd);
             ps = con.prepareStatement(
-                    "select IDREVE, DESCRIPTION_REVE, VALIDATION, IMAGE_REVE FROM reve where VALIDATION = ?");
+                    "select IDREVE, DESCRIPTION_REVE, VALIDATION, IMAGE_REVE, RISQUE_REVE FROM reve where VALIDATION = ?");
             ps.setString(1, "en risque");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) // found
@@ -144,7 +144,9 @@ public class ReveService {
                 nom=rs.getString("IDREVE");
                 desc=rs.getString("DESCRIPTION_REVE");
                 image="Resources/"+rs.getString("IMAGE_REVE");
-                list.add(new Reve(nom,desc,image,""));
+                risque=rs.getString("RISQUE_REVE");
+                list.add(new Reve(nom,desc,image,risque));
+                reinitialisation();
             }
             System.out.println(list);
              } catch (Exception ex) {
@@ -248,5 +250,10 @@ public class ReveService {
             
         }
         return list;
-    }     
+    } 
+    private void reinitialisation(){
+        this.risque="";
+        this.nom="";
+        
+    }
 }
