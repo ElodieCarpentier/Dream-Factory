@@ -41,7 +41,7 @@
                         </tr> 
                         <tr>
                         <td>
-                            <p:commandLink action="#{userLoginView.logout()}">
+                            <p:commandLink action="#{userLoginView.logout()}" onclick="logout()"> 
                                 <h:graphicImage value="Resources/Exit.png" height="30" width="30" id="logout"/>
                                 <p:tooltip id="toolTipLogout" for="logout" value="Déconnexion" trackMouse="true" />
                             </p:commandLink>
