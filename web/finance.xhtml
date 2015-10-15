@@ -10,6 +10,7 @@
         
         <h:head>
             <link rel="stylesheet" href="font-awesome-4.4.0/css/font-awesome.min.css"/>
+            <link rel="stylesheet" href="style.css"/>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
                 <title>Dream Factory</title>
@@ -17,7 +18,7 @@
         </h:head>
         
         
-        <h:body class='back'>
+        <h:body class="login">
             <h:form>
             <p:layout fullPage="true">
 
@@ -71,7 +72,7 @@
                         <p:submenu label="Dream Lab">
                             <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star"/>                            
                             <p:menuitem value="Gestion des risques" action="#{menuView.risque}" icon="ui-icon-notice"/>
-                            <p:menuitem value="Gestion des finances" action="#{menuView.finance}" icon="ui-icon-suitcase"/>
+                            <p:menuitem value="Gestion des finances" action="#{menuView.finance}" icon="ui-icon-suitcase" disabled="true"/>
                             <p:menuitem value="Validation de rêve" action="#{menuView.validationreve}" icon="ui-icon-check"/>
                             <p:menuitem value="Gestion des prototypes" action="#{menuView.prototype}" icon="ui-icon-clipboard"/>
                         </p:submenu>
@@ -82,7 +83,7 @@
                 </p:layoutUnit>
                 </c:if>
                 
-                 <c:if test="${userLoginView.username == 'tristesse'}">
+                 <c:if test="${userLoginView.username == 'triste'}">
                 <p:layoutUnit position="west" size="210" header="Menu">   
                     <p:growl autoUpdate="true"/>     
                     <p:panelMenu style="width:200px">
@@ -90,7 +91,7 @@
                             <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person" id="monprofil"/>
                         </p:submenu>
                         <p:submenu label="Dream Lab">
-                            <p:menuitem value="Gestion des finances" action="#{menuView.finance}" icon="ui-icon-suitcase"/>                            
+                            <p:menuitem value="Gestion des finances" action="#{menuView.finance}" icon="ui-icon-suitcase" disabled="true"/>                            
                         </p:submenu>       
                     </p:panelMenu>
                 </p:layoutUnit>
@@ -99,8 +100,7 @@
                 <p:layoutUnit position="center">
                     <p:breadCrumb>
                         <p:menuitem value="Accueil" action="#{userLoginView.lol}" />
-                        <p:menuitem value="Creation de rêve" url="#" disabled="true"/>
-                        
+                        <p:menuitem value="Gestion des finances" url="#{MenuView.finance}" disabled="true"/>  
                     </p:breadCrumb>
                     
                     <br />
