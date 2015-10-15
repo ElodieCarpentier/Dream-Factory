@@ -3,7 +3,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     
     <f:view contentType="text/html">
@@ -59,28 +59,41 @@
                         </i>
                 </p:layoutUnit>
 
-                
-                <p:layoutUnit position="west" size="200" header="Menu">   
+                <c:if test="${userLoginView.username == 'admin'}">
+                <p:layoutUnit position="west" size="210" header="Menu">   
                     <p:growl autoUpdate="true"/>
- 
+     
                     <p:panelMenu style="width:200px">
                         <p:submenu label="Dream Factory">
                             <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person" id="monprofil"/>
                         </p:submenu>
                         <p:submenu label="Dream Lab">
                             <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star"/>                            
-                            <p:menuitem value="Gestion des risques" action="#{menuView.risque}" icon="ui-icon-notice" disabled="true"/>
+                            <p:menuitem value="Gestion des risques" action="#{menuView.risque}" icon="ui-icon-notice"/>
                             <p:menuitem value="Gestion des finances" action="#{menuView.finance}" icon="ui-icon-suitcase"/>
                             <p:menuitem value="Validation de rêve" action="#{menuView.validationreve}" icon="ui-icon-check"/>
                             <p:menuitem value="Gestion des prototypes" action="#{menuView.prototype}" icon="ui-icon-clipboard"/>
                         </p:submenu>
                         <p:submenu label="Administration">
                             <p:menuitem value="Gestion des users" action="#{menuView.utilisateur}" icon="ui-icon-star"/>
-                        </p:submenu>
-                            
-                    </p:panelMenu>                    
-                    
+                        </p:submenu>        
+                    </p:panelMenu>    
                 </p:layoutUnit>
+                </c:if>
+                
+                <c:if test="${userLoginView.username == 'peur'}">
+                <p:layoutUnit position="west" size="210" header="Menu">   
+                    <p:growl autoUpdate="true"/>     
+                    <p:panelMenu style="width:200px">
+                        <p:submenu label="Dream Factory">
+                            <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person" id="monprofil"/>
+                        </p:submenu>
+                        <p:submenu label="Dream Lab">
+                            <p:menuitem value="Gestion des risques" action="#{menuView.risque}" icon="ui-icon-notice"/>                            
+                        </p:submenu>       
+                    </p:panelMenu>
+                </p:layoutUnit>
+                </c:if>
 
                 <p:layoutUnit position="center">
                     <p:breadCrumb>
