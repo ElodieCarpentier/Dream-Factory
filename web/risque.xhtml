@@ -117,11 +117,11 @@
                         <h:outputText value="#{reverisque.desc}" />
                     </p:column>
                     <p:column headerText="Risques">
-                        <p:inputText id="risquereve" value="#{reverisque.risque}" label="risquereve"/>
+                        <p:inputTextarea id="risquereve" value="#{reverisque.risque}" label="risquereve" rows="6" cols="40"/>
                     </p:column>
                         <p:column>
-                            <p:commandButton actionListener="#{userLoginView.ajoutrisque(reverisque.nomReve, reverisque.risque)}" ajax="false" value="Enregistrer les risques" icon="ui-icon-check" onclick="reloading2()"></p:commandButton>
-                            <p:commandButton actionListener="#{userLoginView.envoiefinance(reverisque.nomReve)}" value="Envoyer en finances" icon="ui-icon-circle-close" onclick="reloading2()"></p:commandButton>          
+                            <p:commandButton actionListener="#{dtReveView.ajoutrisque(reverisque.nomReve, reverisque.risque)}" ajax="false" value="Enregistrer les risques" icon="ui-icon-check" onclick="reloading2()"></p:commandButton>
+                            <p:commandButton actionListener="#{dtReveView.envoiefinance(reverisque.nomReve)}" value="Envoyer en finances" ajax="false" icon="ui-icon-circle-close" onclick="reloading2()"></p:commandButton>          
                         </p:column>
                          
                     </p:dataTable>

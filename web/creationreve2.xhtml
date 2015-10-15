@@ -100,8 +100,8 @@
                 <p:layoutUnit position="center">
                     <p:breadCrumb>
                         <p:menuitem value="Accueil" action="#{userLoginView.lol}" />
-                        <p:menuitem value="Creation de rêve" url="#{MenuView.creationreve}"/>
-                        <p:menuitem value="Nouveau rêve" url="#{MenuView.creationreve2}" disabled="true"/>
+                        <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}"/>
+                        <p:menuitem value="Nouveau rêve" action="#{menuView.creationreve2}" disabled="true"/>
                     </p:breadCrumb>
                     
                     <br />
@@ -126,7 +126,7 @@
                         
                         
                     </h:form>                    
-                    <p:commandButton value="Créer le rêve" action="#{userLoginView.insertionReve()}" onclick="reloading()" icon="ui-icon-star"></p:commandButton>
+                    <p:commandButton value="Créer le rêve" action="#{userLoginView.insertionReve()}" ajax="false" onclick="reloading()" icon="ui-icon-star"></p:commandButton>
                         
 
                 </p:layoutUnit>    

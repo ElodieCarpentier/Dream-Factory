@@ -27,10 +27,6 @@ public class UserLoginView{
     private String nomreve;
     
     private String descriptionreve;
-    
-    private String risquereve;
-    
-    private String revefinance;
         
     private String image;
     
@@ -38,15 +34,6 @@ public class UserLoginView{
     
     private String validation="en risque";
     
-    private String reveproto;
-
-    public void setReveproto(String reveproto) {
-        this.reveproto = reveproto;
-    }
-
-    public String getReveproto() {
-        return reveproto;
-    }
 
     public void setValidation(String validation) {
         this.validation = validation;
@@ -104,22 +91,7 @@ public class UserLoginView{
     public void setNomreve(String nomreve) {
         this.nomreve = nomreve;
     }
-    
-    public String getRisquereve() {
-        return risquereve;
-    }
 
-    public void setRisquereve(String risquereve) {
-        this.risquereve = risquereve;
-    }
-    
-    public String getRevefinance() {
-        return revefinance;
-    }
-
-    public void setRevefinance(String revefinance) {
-        this.revefinance = revefinance;
-    }
 
     public String getDescriptionreve() {
         return descriptionreve;
@@ -128,8 +100,6 @@ public class UserLoginView{
     public void setDescriptionreve(String descriptionreve) {
         this.descriptionreve = descriptionreve;
     }
-    
-    
    
     public void login(ActionEvent event) throws SQLException, ClassNotFoundException {
         RequestContext context = RequestContext.getCurrentInstance();
@@ -171,7 +141,6 @@ public class UserLoginView{
         FacesContext.getCurrentInstance().addMessage(null, message);
         if (loggedIn){
             System.out.println("Loger in");
-            lol();
         }
         context.addCallbackParam("loggedIn", loggedIn);
         
@@ -180,13 +149,9 @@ public class UserLoginView{
                 
     }
     public String lol(){
-        if (username.equals("admin")){
-            return "admin";
-        }
-        else
-        {
-            return "welcomePrimefaces";    
-        }
+        
+        return "welcomePrimefaces";    
+
     }
     
     public String lol2(){
@@ -251,59 +216,10 @@ public class UserLoginView{
         reinitialisation();
         
     }
-     public void ajoutrisque(String nomdureve){
-        FacesContext context = FacesContext.getCurrentInstance();
-        FacesMessage message2 = null;
-        Connection con = null;
-        Statement ps = null;
-        PreparedStatement ps2= null;
-         System.out.println(risquereve);
-         System.out.println("Nom du reve :"+nomdureve+"");
-        try
-        {
-        Class.forName( "com.mysql.jdbc.Driver" );
-        }
-         catch (Exception ex) {
-            System.out.println("Error in login() -->" + ex.getMessage());
-             }
-            
-        String url = "jdbc:mysql://localhost/dreamfactory";
-        String login= "root";
-        String passwd="";
-        try {
-            con = DriverManager.getConnection(url, login, passwd);
-            ps = con.createStatement();
-            String sql= "UPDATE reve SET RISQUE_REVE='"+risquereve+"' WHERE IDREVE='"+nomdureve+"'";
-            ps.executeUpdate(sql);
-            ps2= con.prepareStatement("Select * from reve where RISQUE_REVE=?");
-            ps2.setString(1,risquereve);
-            ResultSet rs2 = ps2.executeQuery();
-            
-             if (rs2.next()) // found
-            {
-                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Les risques ont été enregistrés avec succès ","");
-             }
-             else{
-                 message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur, les informations n'ont pas été enregistrées","");   
-             }
-             }
-           
-           catch (Exception ex) {
-            System.out.println("Error in login() -->" + ex.getMessage());
-            
-          
-             }
-        context.addMessage(null, message2);
-        reinitialisation();
-        
-    }
-     
-     
-    
+
     private void reinitialisation(){
         this.nomreve="";
         this.descriptionreve="";
-        this.risquereve="";
         this.nomreve="";
     }
     
