@@ -193,10 +193,12 @@ public class UserLoginView{
             ps = con.createStatement();
             String sql= "INSERT into reve (IDREVE, DESCRIPTION_REVE, VALIDATION, IMAGE_REVE) values ('"+ nomreve +"','" + descriptionreve +"','"+ validation +"','pasdispo.png')";
             ps.executeUpdate(sql);
+
             
             ps3= con.prepareStatement("Select * from reve where IDREVE=?");
             ps3.setString(1,nomreve);
-            
+            nomreve="";
+            descriptionreve="";
             ResultSet rs3 = ps3.executeQuery();
             
              if (rs3.next()) // found
