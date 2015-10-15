@@ -123,14 +123,15 @@
                     </p:column>
                     <p:column headerText="Coût du rêve">
                         <p:inputTextarea id="finance" value="#{userLoginView.revefinance}" rows="1" cols="33" label="revefinance"/>
-                    </p:column>   
+                    </p:column> 
+                    <p:column headerText="Coût du rêve">
+                        <p:commandButton value="Enregistrer le coût" action="#" icon="ui-icon-disk"></p:commandButton>
+                        <p:commandButton value="Envoyer en validation" action="#" icon="ui-icon-circle-arrow-e"></p:commandButton>
+                    </p:column> 
                     </p:dataTable>
                     
-                    <br/>
-                    
-                    <p:commandButton value="Enregistrer les modifications" action="#" icon="ui-icon-disk"></p:commandButton>           
-                                   
-    
+                    <br/>         
+                                       
                 </p:layoutUnit>    
                 
                 <p:layoutUnit position="south" size="40" closable="true" collapsible="true">
