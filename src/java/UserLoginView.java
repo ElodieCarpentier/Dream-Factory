@@ -36,7 +36,7 @@ public class UserLoginView{
     
     private String statut;
     
-    private String validation;
+    private String validation="en risque";
     
     private String reveproto;
 

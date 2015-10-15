@@ -34,6 +34,7 @@ public class ReveService {
     public String desc;
     public String validation;
     public String image;
+    public String risque;
     
         public List<Reve> createList()throws SQLException, ClassNotFoundException{
         List<Reve> list= new ArrayList<Reve>();
@@ -54,7 +55,7 @@ public class ReveService {
                 nom=rs.getString("IDREVE");
                 desc=rs.getString("DESCRIPTION_REVE");
                 image="Resources/"+rs.getString("IMAGE_REVE");
-                list.add(new Reve(nom,desc,image));
+                list.add(new Reve(nom,desc,image,""));
             }
             System.out.println(list);
              } catch (Exception ex) {
@@ -83,7 +84,7 @@ public class ReveService {
                 nom=rs.getString("IDREVE");
                 desc=rs.getString("DESCRIPTION_REVE");
                 image="Resources/"+rs.getString("IMAGE_REVE");
-                list.add(new Reve(nom,desc,image));
+                list.add(new Reve(nom,desc,image,""));
             }
             System.out.println(list);
              } catch (Exception ex) {
@@ -113,7 +114,7 @@ public class ReveService {
                 nom=rs.getString("IDREVE");
                 desc=rs.getString("DESCRIPTION_REVE");
                 image="Resources/"+rs.getString("IMAGE_REVE");
-                list.add(new Reve(nom,desc,image));
+                list.add(new Reve(nom,desc,image,""));
             }
             System.out.println(list);
              } catch (Exception ex) {
@@ -143,7 +144,7 @@ public class ReveService {
                 nom=rs.getString("IDREVE");
                 desc=rs.getString("DESCRIPTION_REVE");
                 image="Resources/"+rs.getString("IMAGE_REVE");
-                list.add(new Reve(nom,desc,image));
+                list.add(new Reve(nom,desc,image,""));
             }
             System.out.println(list);
              } catch (Exception ex) {
@@ -164,7 +165,7 @@ public class ReveService {
         try {
             con = DriverManager.getConnection(url, login, passwd);
             ps = con.prepareStatement(
-                    "select IDREVE, DESCRIPTION_REVE, VALIDATION, IMAGE_REVE FROM reve where VALIDATION = ?");
+                    "select IDREVE, DESCRIPTION_REVE, VALIDATION, IMAGE_REVE, RISQUE_REVE FROM reve where VALIDATION = ?");
             ps.setString(1, "en finance");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) // found
@@ -173,7 +174,9 @@ public class ReveService {
                 nom=rs.getString("IDREVE");
                 desc=rs.getString("DESCRIPTION_REVE");
                 image="Resources/"+rs.getString("IMAGE_REVE");
-                list.add(new Reve(nom,desc,image));
+                risque=rs.getString("RISQUE_REVE");
+                
+                list.add(new Reve(nom,desc,image,risque));
             }
             System.out.println(list);
              } catch (Exception ex) {
@@ -194,7 +197,7 @@ public class ReveService {
         try {
             con = DriverManager.getConnection(url, login, passwd);
             ps = con.prepareStatement(
-                    "select IDREVE, DESCRIPTION_REVE, VALIDATION, IMAGE_REVE FROM reve where VALIDATION = ?");
+                    "select IDREVE, DESCRIPTION_REVE, VALIDATION, IMAGE_REVE, RISQUE_REVE FROM reve where VALIDATION = ?");
             ps.setString(1, "en valide");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) // found
@@ -203,7 +206,9 @@ public class ReveService {
                 nom=rs.getString("IDREVE");
                 desc=rs.getString("DESCRIPTION_REVE");
                 image="Resources/"+rs.getString("IMAGE_REVE");
-                list.add(new Reve(nom,desc,image));
+                risque=rs.getString("RISQUE_REVE");
+                
+                list.add(new Reve(nom,desc,image,risque));
             }
             System.out.println(list);
              } catch (Exception ex) {
@@ -224,7 +229,7 @@ public class ReveService {
         try {
             con = DriverManager.getConnection(url, login, passwd);
             ps = con.prepareStatement(
-                    "select IDREVE, DESCRIPTION_REVE, VALIDATION, IMAGE_REVE FROM reve where VALIDATION = ?");
+                    "select IDREVE, DESCRIPTION_REVE, VALIDATION, IMAGE_REVE, RISQUE_REVE FROM reve where VALIDATION = ?");
             ps.setString(1, "proto");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) // found
@@ -233,7 +238,9 @@ public class ReveService {
                 nom=rs.getString("IDREVE");
                 desc=rs.getString("DESCRIPTION_REVE");
                 image="Resources/"+rs.getString("IMAGE_REVE");
-                list.add(new Reve(nom,desc,image));
+                risque=rs.getString("RISQUE_REVE");
+                
+                list.add(new Reve(nom,desc,image,risque));
             }
             System.out.println(list);
              } catch (Exception ex) {
