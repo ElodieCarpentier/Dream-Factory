@@ -29,12 +29,32 @@ public class UserLoginView{
     private String descriptionreve;
     
     private String risquereve;
+    
+    private String revefinance;
         
     private String image;
     
     private String statut;
     
-    private String validation = "en risque";
+    private String validation;
+    
+    private String reveproto;
+
+    public void setReveproto(String reveproto) {
+        this.reveproto = reveproto;
+    }
+
+    public String getReveproto() {
+        return reveproto;
+    }
+
+    public void setValidation(String validation) {
+        this.validation = validation;
+    }
+
+    public String getValidation() {
+        return validation;
+    }
 
     public String getNom() {
         return nom;
@@ -43,8 +63,7 @@ public class UserLoginView{
     public void setNom(String nom) {
         this.nom = nom;
     }
-
-    
+   
 
     public String getStatut() {
         return statut;
@@ -92,6 +111,14 @@ public class UserLoginView{
 
     public void setRisquereve(String risquereve) {
         this.risquereve = risquereve;
+    }
+    
+    public String getRevefinance() {
+        return revefinance;
+    }
+
+    public void setRevefinance(String revefinance) {
+        this.revefinance = revefinance;
     }
 
     public String getDescriptionreve() {

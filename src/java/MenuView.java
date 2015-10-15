@@ -46,6 +46,10 @@ public class MenuView {
     public String finance(){
         return "finance";
     }
+    
+    public String prototype(){
+        return "prototype";
+    }
      
     public void addMessage(String summary, String detail) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
