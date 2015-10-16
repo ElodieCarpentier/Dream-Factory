@@ -146,6 +146,7 @@
                             <p:menuitem value="Gestion des finances" action="#{menuView.finance}" icon="ui-icon-suitcase"/>
                             <p:menuitem value="Validation de rêve" action="#{menuView.validationreve}" icon="ui-icon-check"/>
                             <p:menuitem value="Gestion des prototypes" action="#{menuView.prototype}" icon="ui-icon-clipboard"/>
+                            <p:menuitem value="Prototypes acceptés" action="#{menuView.fini}" icon="ui-icon-heart"/>
                         </p:submenu>
                         <p:submenu label="Administration">
                             <p:menuitem value="Gestion des users" action="#{menuView.utilisateur}" icon="ui-icon-star"/>
@@ -168,14 +169,14 @@
                         </p:contentFlow>                      
                     </div>
                     <div style="float: right;height:400px;overflow:auto; width: 800px">
-                        <center>Rêves Validés </center>
+                        <center>Prototypes en attente de validation </center>
                         <br />
                        <p:contentFlow value="#{dtReveView.createListProto()}" var="proto">
                            <p:graphicImage value="#{proto.image}" styleClass="content"/>
                             <div class="caption" style="color: #0404B4">#{proto.nomReve} <br/> #{proto.desc}</div>
                         </p:contentFlow>
                     </div>
-                    <div style="height:400px;overflow:auto; width: 800px">
+                    <div style="float: left; height:400px;overflow:auto; width: 800px">
                         <center>Rêve en attente de validation </center>
                         <br />
                        <p:contentFlow value="#{dtReveView.createListValide()}" var="valide">
@@ -183,6 +184,15 @@
                             <div class="caption" style="color: #0404B4">#{valide.nomReve} <br/> #{valide.desc}</div>
                         </p:contentFlow>
                     </div>
+                    <div style="float: right; height:400px;overflow:auto; width: 800px">
+                        <center>Rêve prêt à être fabriquer </center>
+                        <br />
+                        <p:contentFlow value="#{dtReveView.createListFini()}" var="fini">
+                            <p:graphicImage value="#{fini.image}" styleClass="content"/>
+                            <div class="caption" style="color: #0404B4">#{fini.nomReve} <br/> #{fini.desc}</div>
+                        </p:contentFlow>
+                    </div>
+                
                 
                     
                 </p:layoutUnit>

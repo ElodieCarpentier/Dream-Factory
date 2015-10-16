@@ -59,21 +59,6 @@
                         </center>
                         </i>
                 </p:layoutUnit>
-
-                
-                <c:if test="${userLoginView.username == 'joy'}">
-                <p:layoutUnit position="west" size="210" header="Menu">   
-                    <p:growl autoUpdate="true"/>     
-                    <p:panelMenu style="width:200px">
-                        <p:submenu label="Dream Factory">
-                            <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person" id="monprofil"/>
-                        </p:submenu>
-                        <p:submenu label="Dream Lab">
-                            <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star" disabled="true"/>                            
-                        </p:submenu>       
-                    </p:panelMenu>
-                </p:layoutUnit>
-                </c:if>
                 
                 <c:if test="${userLoginView.username == 'admin'}">
                 <p:layoutUnit position="west" size="210" header="Menu">   
@@ -84,12 +69,12 @@
                             <p:menuitem value="Mon profil" action="#{userLoginView.monprofil}" icon="ui-icon-person" id="monprofil"/>
                         </p:submenu>
                         <p:submenu label="Dream Lab">
-                            <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star" disabled="true"/>                            
+                            <p:menuitem value="Creation de rêve" action="#{menuView.creationreve}" icon="ui-icon-star"/>                            
                             <p:menuitem value="Gestion des risques" action="#{menuView.risque}" icon="ui-icon-notice"/>
                             <p:menuitem value="Gestion des finances" action="#{menuView.finance}" icon="ui-icon-suitcase"/>
                             <p:menuitem value="Validation de rêve" action="#{menuView.validationreve}" icon="ui-icon-check"/>
                             <p:menuitem value="Gestion des prototypes" action="#{menuView.prototype}" icon="ui-icon-clipboard"/>
-                            <p:menuitem value="Prototypes acceptés" action="#{menuView.fini}" icon="ui-icon-heart"/>
+                            <p:menuitem value="Prototypes acceptés" action="#{menuView.fini}" icon="ui-icon-heart" disabled="true"/>
                         </p:submenu>
                         <p:submenu label="Administration">
                             <p:menuitem value="Gestion des users" action="#{menuView.utilisateur}" icon="ui-icon-star"/>
@@ -101,42 +86,26 @@
                 <p:layoutUnit position="center">
                     <p:breadCrumb>
                         <p:menuitem value="Accueil" action="#{userLoginView.lol}" />
-                        <p:menuitem value="Creation de reve" url="#{MenuView.creationreve}" disabled="true"/>
+                        <p:menuitem value="Prototypes acceptés" url="#{menuView.fini}" disabled="true"/>
                     </p:breadCrumb>
                     
                     <br />
 
                     <table align="left">
                         <tr>   
-                            <td style="color: #4682B4"><font size="5"><b>Rêves créés</b></font></td>
+                            <td style="color: #4682B4"><font size="5"><b>Prototypes acceptés</b></font></td>
                         </tr>
                         <tr><td></td></tr>
                         <tr>
+                            
                             <td>
-                    <p:galleria value="#{dtReveView.createList()}" var="image" panelWidth="500" panelHeight="313" showCaption="true">
+                    <p:galleria value="#{dtReveView.createListFini()}" var="image" panelWidth="500" panelHeight="313" showCaption="true">
                         <p:graphicImage value="#{image.image}" alt="#{image.desc}" title="#{image.nomReve}"/>
                     </p:galleria>
                     </td>
-                    </tr>
-                    <tr>
-                        <td>
-                        <p:commandButton value="Créer un rêve" action="#{menuView.creationreve2}" icon="ui-icon-star"></p:commandButton>
-                    </td>
-                    </tr>    
+                        </tr>
                     </table>
-                        
-
-                        
-                        
-                    
-                                        
-                
                 </p:layoutUnit>    
-                
-                <p:layoutUnit position="south" size="40" closable="true" collapsible="true">
-                    Informations de connexion
-                </p:layoutUnit>
-
             </p:layout>
                 </h:form>
 

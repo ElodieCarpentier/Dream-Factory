@@ -261,6 +261,39 @@ public class ReveService {
         }
         return list;
     }
+    
+    public List<Reve> createListFini()throws SQLException, ClassNotFoundException{
+        List<Reve> list= new ArrayList<Reve>();
+        Connection con = null;
+        PreparedStatement ps = null;
+        Class.forName( "com.mysql.jdbc.Driver" );
+        String url = "jdbc:mysql://localhost/dreamfactory";
+        String login= "root";
+        String passwd="";
+        try {
+            con = DriverManager.getConnection(url, login, passwd);
+            ps = con.prepareStatement(
+                    "select IDREVE, DESCRIPTION_REVE, VALIDATION, IMAGE_REVE, RISQUE_REVE, COUT FROM reve where VALIDATION = ?");
+            ps.setString(1, "ok");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) // found
+            {
+                
+                nom=rs.getString("IDREVE");
+                desc=rs.getString("DESCRIPTION_REVE");
+                image="Resources/"+rs.getString("IMAGE_REVE");
+                risque=rs.getString("RISQUE_REVE");
+                finance=rs.getInt("COUT");
+                
+                list.add(new Reve(nom,desc,image,risque,finance));
+            }
+            System.out.println(list);
+             } catch (Exception ex) {
+            System.out.println("Error in login() -->" + ex.getMessage());
+            
+        }
+        return list;
+    }
     public void valider(String nomdureve){
         FacesContext context = FacesContext.getCurrentInstance();
         FacesMessage message2 = null;
@@ -289,10 +322,10 @@ public class ReveService {
             
              if (rs2.next()) // found
             {
-                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Les risques ont été enregistrés avec succès ","");
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Le rève est envoyé pour acceptation du prototype par le directeur","");
              }
              else{
-                 message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur, les informations n'ont pas été enregistrées","");   
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur, le rêve n'a pas été envoyé","");   
              }
              }
            
@@ -332,7 +365,7 @@ public class ReveService {
             
              if (rs2.next()) // found
             {
-                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Les risques ont été enregistrés avec succès ","");
+                 message2 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Les rêve à été refusé avec succes ","");
              }
              else{
                  message2 = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur, les informations n'ont pas été enregistrées","");   
@@ -543,9 +576,9 @@ public class ReveService {
         try {
             con = DriverManager.getConnection(url, login, passwd);
             ps = con.createStatement();
-            String sql= "UPDATE reve SET VALIDATION='approuvé' WHERE IDREVE='"+nomdureve+"'";
+            String sql= "UPDATE reve SET VALIDATION='ok' WHERE IDREVE='"+nomdureve+"'";
             ps.executeUpdate(sql);
-            ps2= con.prepareStatement("Select * from reve where VALIDATION='approuvé' and IDREVE=?");
+            ps2= con.prepareStatement("Select * from reve where VALIDATION='ok' and IDREVE=?");
             ps2.setString(1,nomdureve);
             ResultSet rs2 = ps2.executeQuery();
             

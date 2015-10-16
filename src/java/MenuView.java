@@ -59,6 +59,10 @@ public class MenuView {
         return "user";
     }
     
+    public String fini(){
+        return "fini";
+    }
+    
      
     public void addMessage(String summary, String detail) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
